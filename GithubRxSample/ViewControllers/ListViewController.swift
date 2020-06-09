@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ListViewController: UIViewController {
     
     private var navigator: Navigator!
     private var viewModel: ListViewModel!
+    private let db = DisposeBag()
     
     static func createWith(navigator: Navigator,
                            storyboard: UIStoryboard,
@@ -22,11 +25,83 @@ class ListViewController: UIViewController {
         return vc
     }
     
+    //MARK: Views
+
+    @IBOutlet weak var tableView: UITableView!
+    private let indicator = Indicator(style: .medium)
+    
     //MARK: ViewController lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        prepareTableView()
+        bindUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    //MARK: Private
+    
+    private func prepareTableView() {
+        tableView.backgroundView = indicator
+        tableView.register(UINib(nibName: "RepositoryCell", bundle: Bundle.main),
+                           forCellReuseIdentifier: "RepositoryCell")
+    }
+    
+    private func bindUI() {
+        viewModel.tableData
+            .map { _ in false }
+            .drive(indicator.rx.isAnimating)
+            .disposed(by: db)
+        
+        viewModel.tableData
+            .map { "\($0.count) repositories" }
+            .drive(navigationItem.rx.title)
+            .disposed(by: db)
+        
+        tableView.rx.setDelegate(self).disposed(by: db)
+                        
+        viewModel.tableData
+            .do(onNext: { [unowned self] _ in
+                self.tableView.separatorStyle = .singleLine
+            })
+            .drive(tableView.rx.items(cellIdentifier: RepositoryCell.cellID,
+                                      cellType: RepositoryCell.self)) { _, model, cell in
+                cell.configure(with: model)
+            }.disposed(by: db)
+                
+        let countObservable = viewModel.tableData.asObservable().map { $0.count }
+        let displayCellObservable = tableView.rx.willDisplayCell.map { $1.row }
+        
+        Observable.combineLatest(countObservable, displayCellObservable)
+            .filter { $0 - 1 == $1 }
+            .map { $1 }
+            .distinctUntilChanged()
+            .subscribe(onNext: { [unowned self] _ in
+                self.viewModel.page.accept(self.viewModel.page.value + 1)
+            }).disposed(by: db)
+        
+        tableView.rx.itemSelected
+            .do(onNext: { [unowned self] indexPath in
+                self.tableView.deselectRow(at: indexPath, animated: true)
+            }).subscribe(onNext: { [unowned self] in
+                self.viewModel.selectedIndexPath.accept($0)
+            }).disposed(by: db)
+        
+        viewModel.selectedIndexPath.asDriver()
+            .skip(1)
+            .do(onNext: { [unowned self] _ in
+                self.navigator.show(.description(self.viewModel.repoName), sender: self)
+            }).drive()
+            .disposed(by: db)
+    }
+}
 
+extension ListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return RepositoryCell.cellHeight
+    }
 }

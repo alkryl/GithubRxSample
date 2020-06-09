@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         let nav = window!.rootViewController! as! UINavigationController
-        navigator.show(.language, sender: nav)
+        navigator.show(.main, sender: nav)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

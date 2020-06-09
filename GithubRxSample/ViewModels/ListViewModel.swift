@@ -7,7 +7,34 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
-struct ListViewModel {
+class ListViewModel {
     
+    private let db = DisposeBag()
+    private var data = BehaviorRelay(value: [Repository]())
+    
+    var page = BehaviorRelay(value: 1)
+    var selectedIndexPath = BehaviorRelay(value: IndexPath())
+    
+    var tableData: Driver<[Repository]> {
+        return data.skipWhile { $0.isEmpty }.share().asDriver(onErrorJustReturn: [])
+    }
+    var repoName: String {
+        return data.value[selectedIndexPath.value.row].fullName
+    }
+    
+    //MARK: Initialization
+    
+    init(language: String) {
+        page.asObservable()
+            .flatMap { APIService().getData(.repositories(language, $0)) }
+            .flatMap { ($0.deserialize() as Observable<Repositories>) }
+            .map { $0.items }
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: { [unowned self] in
+                self.data.accept(self.data.value + $0)
+            }).disposed(by: db)
+    }
 }

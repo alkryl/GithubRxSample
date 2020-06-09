@@ -10,5 +10,10 @@ target 'GithubRxSample' do
     pod 'RxSwift'
     pod 'RxCocoa'
     pod 'RxDataSources'
+    pod 'RxSwiftExt'
+    
+  # Animations
+    pod 'Motion'
+    
 
 end
