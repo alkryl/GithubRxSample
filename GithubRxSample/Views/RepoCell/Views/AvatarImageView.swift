@@ -38,7 +38,7 @@ import RxCocoa
             .flatMap { APIService().getData(.image($0)) }
             .map { UIImage(data: $0) }
             .asDriver(onErrorJustReturn: UIImage(named: "default.png"))
-            .drive(onNext: { (image) in
+            .drive(onNext: { [unowned self] (image) in
                 self.imageSubject.onNext(image)
             }).disposed(by: db)
         

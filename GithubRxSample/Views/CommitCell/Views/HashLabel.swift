@@ -26,9 +26,7 @@ class HashLabel: UILabel {
     
     private func bindUI() {
         commitHash.asDriver()
-            .map {
-                return String($0.prefix(5))
-            }
+            .map { String($0.prefix(5)) }
             .drive(self.rx.text)
             .disposed(by: db)
     }
