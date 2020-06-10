@@ -13,6 +13,7 @@ target 'GithubRxSample' do
     pod 'RxSwiftExt'
     pod "RxRealm"
     pod "RxKingfisher"
+    pod "RxGesture"
     
   # Animations
     pod 'Motion'

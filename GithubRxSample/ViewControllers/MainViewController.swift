@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxGesture
 
 class MainViewController: UIViewController {
     
@@ -40,6 +41,12 @@ class MainViewController: UIViewController {
                 self.navigator.show(.list(language), sender: self)
             }).subscribe()
             .disposed(by: db)
+        
+        chooseView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { (tap) in
+                self.handleTap(tap)
+            }).disposed(by: db)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,9 +60,9 @@ class MainViewController: UIViewController {
         }
     }
     
-    //MARK: Actions
+    //MARK: Private
     
-    @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
+    private func handleTap(_ sender: UITapGestureRecognizer) {
         chooseView.hideSubviews.onNext(true)
         let handler: () -> () = { [weak self] in
             guard let strongSelf = self else { return }

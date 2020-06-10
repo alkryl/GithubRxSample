@@ -59,9 +59,6 @@
                                         <real key="value" value="35"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="ZHY-FJ-loO" appends="YES" id="r0o-9e-4gT"/>
-                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.29803921568627451" green="0.31372549019607843" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -79,11 +76,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bhe-t8-sfY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="ZHY-FJ-loO">
-                    <connections>
-                        <action selector="handleTap:" destination="mdH-y9-ydH" id="hqq-NZ-M7s"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-659.4202898550725" y="115.84821428571428"/>
         </scene>
