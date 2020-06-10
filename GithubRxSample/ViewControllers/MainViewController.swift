@@ -34,19 +34,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel.selectedLanguage.asObservable()
-            .filter { $0.count > 0 }
-            .do(onNext: { language in
-                self.navigator.show(.list(language), sender: self)
-            }).subscribe()
-            .disposed(by: db)
-        
-        chooseView.rx.tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: { (tap) in
-                self.handleTap(tap)
-            }).disposed(by: db)
+        bindUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +49,21 @@ class MainViewController: UIViewController {
     }
     
     //MARK: Private
+    
+    private func bindUI() {
+        viewModel.selectedLanguage.asObservable()
+            .filter { $0.count > 0 }
+            .do(onNext: { language in
+                self.navigator.show(.list(language), sender: self)
+            }).subscribe()
+            .disposed(by: db)
+        
+        chooseView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { (tap) in
+                self.handleTap(tap)
+            }).disposed(by: db)
+    }
     
     private func handleTap(_ sender: UITapGestureRecognizer) {
         chooseView.hideSubviews.onNext(true)
