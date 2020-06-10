@@ -72,14 +72,6 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="sC9-vM-x9N">
-                        <rect key="frame" x="45" y="38" width="22" height="22"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="22" id="SIr-fe-LWv"/>
-                            <constraint firstAttribute="height" constant="22" id="uBR-1T-gBJ"/>
-                        </constraints>
-                        <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Wwy-tq-Xea" firstAttribute="leading" secondItem="8iO-4T-zCD" secondAttribute="trailing" constant="10" id="26O-mh-4dM"/>
@@ -90,8 +82,6 @@
                     <constraint firstItem="Wwy-tq-Xea" firstAttribute="centerY" secondItem="8iO-4T-zCD" secondAttribute="centerY" id="NHW-tC-Xhh"/>
                     <constraint firstItem="8iO-4T-zCD" firstAttribute="leading" secondItem="2Rp-p4-1Xb" secondAttribute="trailing" constant="10" id="TQ1-ft-xSF"/>
                     <constraint firstAttribute="trailing" secondItem="0Mf-IF-aFI" secondAttribute="trailing" constant="10" id="cNw-Py-kbI"/>
-                    <constraint firstItem="sC9-vM-x9N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="45" id="h0W-CD-vng"/>
-                    <constraint firstItem="sC9-vM-x9N" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="iox-4D-X0L"/>
                     <constraint firstAttribute="trailing" secondItem="5hA-e9-j3Q" secondAttribute="trailing" constant="10" id="liJ-94-AGR"/>
                     <constraint firstItem="Qwc-HE-Txs" firstAttribute="leading" secondItem="8iO-4T-zCD" secondAttribute="leading" id="luQ-ff-EQe"/>
                     <constraint firstItem="8iO-4T-zCD" firstAttribute="top" secondItem="2Rp-p4-1Xb" secondAttribute="top" id="nB6-rl-sGL"/>
@@ -112,7 +102,6 @@
                 <outlet property="loginLabel" destination="g3F-Oq-vmI" id="pTZ-Rk-Rrh"/>
                 <outlet property="nameLabel" destination="8iO-4T-zCD" id="oXu-B0-wcG"/>
                 <outlet property="privateImageView" destination="Wwy-tq-Xea" id="2My-Nx-N62"/>
-                <outlet property="spinner" destination="sC9-vM-x9N" id="38j-an-SLh"/>
                 <outlet property="starsLabel" destination="5hA-e9-j3Q" id="vmA-aJ-3d0"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="99.776785714285708"/>

@@ -9,10 +9,10 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxKingfisher
 
 @IBDesignable class AuthorImageView: UIImageView {
 
-    var imageSubject = PublishSubject<UIImage?>()
     private var urlString: BehaviorRelay<String> = BehaviorRelay(value: "")
     private let db = DisposeBag()
         
@@ -36,7 +36,7 @@ import RxCocoa
         if let url = string {
             urlString.accept(url)
         } else {
-            imageSubject.onNext(UIImage(named: "default.png"))
+            image = UIImage(named: "default.png")
         }
     }
     
@@ -44,16 +44,9 @@ import RxCocoa
     
     private func bindUI() {
         urlString.asObservable()
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
-            .flatMap { APIService().getData(.image($0)) }
-            .map { UIImage(data: $0) }
-            .asDriver(onErrorJustReturn: UIImage(named: "default.png"))
-            .drive(onNext: { [unowned self] (image) in
-                self.imageSubject.onNext(image)
-            }).disposed(by: db)
-        
-        imageSubject.asObservable()
-            .bind(to: self.rx.image)
+            .filter { !$0.isEmpty }
+            .map { URL(string: $0) }
+            .bind(to: (self as UIImageView).kf.rx.image(options: [.transition(.fade(0.2))]))
             .disposed(by: db)
     }
 }

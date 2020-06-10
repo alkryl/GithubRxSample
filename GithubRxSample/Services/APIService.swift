@@ -21,7 +21,6 @@ class APIService {
         switch type {
             case .repositories(let lang, let page): target = API.repositories(lang, page: page)
             case .commits(let repo): target = API.commits(repo)
-            case .image(let source): target = API.image(source)
         }
         return target
             .map { URL(string: $0) }
@@ -36,7 +35,6 @@ extension APIService {
     enum APIType {
         case repositories(String, Int)
         case commits(String)
-        case image(String)
     }
     
     private struct API {
@@ -50,10 +48,6 @@ extension APIService {
         
         fileprivate static func commits(_ repo: String) -> Observable<String> {
             return Observable.just("https://api.github.com/repos/\(repo)/commits")
-        }
-        
-        fileprivate static func image(_ source: String) -> Observable<String> {
-            return Observable.just(source)
         }
     }
 }

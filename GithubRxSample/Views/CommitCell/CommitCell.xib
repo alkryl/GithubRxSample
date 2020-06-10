@@ -79,13 +79,6 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="91C-tC-6ok">
-                        <rect key="frame" x="17" y="36" width="22" height="22"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="22" id="aG8-dz-W8P"/>
-                            <constraint firstAttribute="height" constant="22" id="r59-nf-Kfc"/>
-                        </constraints>
-                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="bPX-kT-cFR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iZA-KY-ria" secondAttribute="trailing" constant="8" id="3Uk-nZ-lng"/>
@@ -95,11 +88,9 @@
                     <constraint firstItem="67a-VJ-flM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="I7B-cp-Lb0"/>
                     <constraint firstAttribute="trailing" secondItem="bPX-kT-cFR" secondAttribute="trailing" constant="10" id="JLz-KU-AzH"/>
                     <constraint firstAttribute="bottom" secondItem="ueG-AM-dKZ" secondAttribute="bottom" constant="8" id="LeN-96-oKV"/>
-                    <constraint firstAttribute="bottom" secondItem="91C-tC-6ok" secondAttribute="bottom" constant="8" id="QcI-Vy-2mf"/>
                     <constraint firstItem="ueG-AM-dKZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="cTf-Ga-EMl"/>
                     <constraint firstItem="bPX-kT-cFR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hfd-x3-FEc"/>
                     <constraint firstItem="l6s-49-eib" firstAttribute="leading" secondItem="ueG-AM-dKZ" secondAttribute="trailing" constant="8" id="p9S-0T-XhM"/>
-                    <constraint firstItem="91C-tC-6ok" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="17" id="w4H-u6-wgi"/>
                     <constraint firstItem="iZA-KY-ria" firstAttribute="bottom" secondItem="l6s-49-eib" secondAttribute="bottom" id="zGj-Yy-sKQ"/>
                     <constraint firstItem="bPX-kT-cFR" firstAttribute="leading" secondItem="67a-VJ-flM" secondAttribute="trailing" constant="10" id="zV4-1p-Ihc"/>
                 </constraints>
@@ -111,7 +102,6 @@
                 <outlet property="hashLabel" destination="fqf-ao-25z" id="ia4-zn-RPQ"/>
                 <outlet property="loginLabel" destination="l6s-49-eib" id="IHf-ev-Tct"/>
                 <outlet property="messageLabel" destination="67a-VJ-flM" id="j6J-h1-VVC"/>
-                <outlet property="spinner" destination="91C-tC-6ok" id="pqd-0Z-cz0"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="77.008928571428569"/>
         </tableViewCell>

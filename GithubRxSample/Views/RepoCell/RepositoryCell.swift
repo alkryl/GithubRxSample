@@ -26,7 +26,6 @@ class RepositoryCell: UITableViewCell {
     @IBOutlet weak var loginLabel: LoginLabel!
     @IBOutlet weak var languageView: LanguageCircleView!
     @IBOutlet weak var starsLabel: StarsLabel!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     //MARK: Methods
     
@@ -38,15 +37,5 @@ class RepositoryCell: UITableViewCell {
         loginLabel.login.accept(model.owner.login)
         languageView.language.accept(model.language)
         starsLabel.stars.accept(model.stars)
-        bindSpinner()
-    }
-    
-    //MARK: Private
-    
-    private func bindSpinner() {
-        avatarImageView.imageSubject.asObservable()
-            .map { _ in false }
-            .bind(to: spinner.rx.isAnimating)
-            .disposed(by: db)
     }
 }

@@ -24,25 +24,14 @@ class CommitCell: UITableViewCell {
     @IBOutlet weak var loginLabel: AuthorLoginLabel!
     @IBOutlet weak var dateLabel: DateLabel!
     @IBOutlet weak var hashLabel: HashLabel!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     //MARK: Methods
     
     func configure(with model: Item) {
-        bindSpinner()
         messageLabel.message.accept(model.commit.message)
         loginLabel.login.accept(model.author?.login)
         dateLabel.date.accept(model.commit.author.date)
         hashLabel.commitHash.accept(model.hash)
         authorImageView.updateUrl(string: model.author?.avatar)
-    }
-    
-    //MARK: Private
-    
-    private func bindSpinner() {
-        authorImageView.imageSubject.asObservable()
-            .map { _ in false }
-            .bind(to: spinner.rx.isAnimating)
-            .disposed(by: db)
     }
 }
