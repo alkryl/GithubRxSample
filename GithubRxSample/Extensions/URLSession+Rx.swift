@@ -38,8 +38,7 @@ extension Reactive where Base == URLSession {
     
     func data(with request: URLRequest) -> Observable<Data> {
         return response(with: request).flatMap { (httpResponse, data) -> Observable<Data> in
-            return 200 ..< 300 ~= httpResponse.statusCode ? Observable.just(data) :
-                                                            Observable.error(RxURLSessionError.unknown)
+            return 200 ..< 300 ~= httpResponse.statusCode ? Observable.just(data) : Observable.error(RxURLSessionError.unknown)
         }
     }
 }

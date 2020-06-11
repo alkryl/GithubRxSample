@@ -31,20 +31,21 @@ class ListViewController: UIViewController {
     private let indicator = Indicator(style: .medium)
     
     //MARK: ViewController lifecycle
+    
+    //TODO: Fix warning on iOS 13 - UITableViewAlertForLayoutOutsideViewHierarchy
+    /* Rx calls layoutIfNeeded() inside of viewDidLoad()
+       https://github.com/ReactiveX/RxSwift/pull/2076
+       tableView's fix will be out on the next release */
 
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareTableView()
+        bindUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        bindUI()
     }
     
     //MARK: Private

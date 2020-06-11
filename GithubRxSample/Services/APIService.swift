@@ -6,7 +6,6 @@
 //  Copyright © 2020 Alexander Krylov. All rights reserved.
 //
 
-import Foundation
 import RxSwift
 import RxCocoa
 import RxSwiftExt

@@ -6,7 +6,6 @@
 //  Copyright © 2020 Alexander Krylov. All rights reserved.
 //
 
-import UIKit
 import RxSwift
 import RxCocoa
 

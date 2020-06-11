@@ -7,16 +7,12 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 class RepositoryCell: UITableViewCell {
     
     static let cellID = "RepositoryCell"
     static let cellHeight: CGFloat = 98.0
-    
-    private let db = DisposeBag()
-    
+        
     //MARK: Outlets
     
     @IBOutlet weak var nameLabel: NameLabel!

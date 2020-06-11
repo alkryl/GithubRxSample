@@ -7,16 +7,12 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 class CommitCell: UITableViewCell {
 
     static let cellID = "CommitCell"
     static let cellHeight: CGFloat = 66.0
-    
-    private let db = DisposeBag()
-    
+        
     //MARK: Outlets
     
     @IBOutlet weak var messageLabel: MessageLabel!

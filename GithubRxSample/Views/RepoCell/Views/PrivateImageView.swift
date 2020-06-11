@@ -28,8 +28,7 @@ class PrivateImageView: UIImageView {
         isPrivate.asDriver()
             .map { value -> UIImage? in
                 return UIImage(named: value ? "private.png" : "free.png")
-            }
-            .drive(self.rx.image)
+            }.drive(self.rx.image)
             .disposed(by: db)
     }
 }
