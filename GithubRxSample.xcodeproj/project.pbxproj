@@ -50,6 +50,9 @@
 		D0D0843B24851E4C00611245 /* Data+Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D0843A24851E4C00611245 /* Data+Content.swift */; };
 		D0D0843E24853F2A00611245 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D0843D24853F2A00611245 /* Indicator.swift */; };
 		D0D0844124855EEE00611245 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D0843F24855EEE00611245 /* RepositoryCell.swift */; };
+		D0D5635E24922DA2000C2FF0 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D5635D24922DA2000C2FF0 /* CodeViewController.swift */; };
+		D0D5636024922E81000C2FF0 /* CodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D5635F24922E81000C2FF0 /* CodeViewModel.swift */; };
+		D0D5636224924112000C2FF0 /* UIViewController+RxAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D5636124924112000C2FF0 /* UIViewController+RxAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +103,9 @@
 		D0D0843A24851E4C00611245 /* Data+Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Content.swift"; sourceTree = "<group>"; };
 		D0D0843D24853F2A00611245 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		D0D0843F24855EEE00611245 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
+		D0D5635D24922DA2000C2FF0 /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
+		D0D5635F24922E81000C2FF0 /* CodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewModel.swift; sourceTree = "<group>"; };
+		D0D5636124924112000C2FF0 /* UIViewController+RxAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+RxAlert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +237,7 @@
 				D0D0841A247D3A8000611245 /* LanguageViewController.swift */,
 				D0D0841C247D3A9D00611245 /* ListViewController.swift */,
 				D0D0841E247D3AAD00611245 /* DescriptionViewController.swift */,
+				D0D5635D24922DA2000C2FF0 /* CodeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -242,6 +249,7 @@
 				D0D08421247D3B5C00611245 /* LanguageViewModel.swift */,
 				D0D08423247D3B7B00611245 /* ListViewModel.swift */,
 				D0D08425247D3B8D00611245 /* DescriptionViewModel.swift */,
+				D0D5635F24922E81000C2FF0 /* CodeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -250,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				D0D0842A247D3E1600611245 /* UIStoryboard+.swift */,
+				D0D5636124924112000C2FF0 /* UIViewController+RxAlert.swift */,
 				D0D08438248509BE00611245 /* URLSession+Rx.swift */,
 				D0D0843A24851E4C00611245 /* Data+Content.swift */,
 				D00BBBB9248EC76F000B31F8 /* CGColor+.swift */,
@@ -405,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0D0842B247D3E1600611245 /* UIStoryboard+.swift in Sources */,
+				D0D5635E24922DA2000C2FF0 /* CodeViewController.swift in Sources */,
 				D0D08433247EAFDB00611245 /* MainViewController.swift in Sources */,
 				D0D084372482B91C00611245 /* Repository.swift in Sources */,
 				D0D08405247D389A00611245 /* AppDelegate.swift in Sources */,
@@ -436,7 +446,9 @@
 				D0D08431247EA1DB00611245 /* Languages.swift in Sources */,
 				D00BBB992487A819000B31F8 /* LoginLabel.swift in Sources */,
 				D00BBB932487A69B000B31F8 /* NameLabel.swift in Sources */,
+				D0D5636024922E81000C2FF0 /* CodeViewModel.swift in Sources */,
 				D0D08422247D3B5C00611245 /* LanguageViewModel.swift in Sources */,
+				D0D5636224924112000C2FF0 /* UIViewController+RxAlert.swift in Sources */,
 				D00BBBBA248EC76F000B31F8 /* CGColor+.swift in Sources */,
 				D0D0841B247D3A8000611245 /* LanguageViewController.swift in Sources */,
 				D00BBB9C2487AC64000B31F8 /* PrivateImageView.swift in Sources */,

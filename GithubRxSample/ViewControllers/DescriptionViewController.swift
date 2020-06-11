@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import WebKit
 
 class DescriptionViewController: UIViewController {
     
@@ -69,8 +68,21 @@ class DescriptionViewController: UIViewController {
         tableView.rx.itemSelected
             .do(onNext: { [unowned self] indexPath in
                 self.tableView.deselectRow(at: indexPath, animated: true)
+                self.viewModel.selectedIndexPath.onNext(indexPath)
             }).subscribe()
             .disposed(by: db)
+        
+        viewModel.hash
+            .subscribe(onNext: { [unowned self] (hash) in
+                self.showCodeOnGithub(with: hash)
+            }).disposed(by: db)
+    }
+    
+    private func showCodeOnGithub(with hash: String) {
+        showAlert(title: "Show on Github?", description: nil) { [unowned self] in
+            self.navigator.show(.code(self.viewModel.repoName, hash), sender: self)
+        }.subscribe()
+        .disposed(by: db)
     }
 }
 

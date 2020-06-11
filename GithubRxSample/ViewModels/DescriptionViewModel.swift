@@ -13,8 +13,11 @@ import RxCocoa
 class DescriptionViewModel {
     
     private let db = DisposeBag()
-    private var repoName: String
     private var data = BehaviorRelay(value: [Item]())
+    
+    var selectedIndexPath = PublishSubject<IndexPath>()
+    var hash = PublishSubject<String>()
+    var repoName: String
         
     var tableData: Driver<[Item]> {
         return data.skipWhile { $0.isEmpty }.share().asDriver(onErrorJustReturn: [])
@@ -34,6 +37,12 @@ class DescriptionViewModel {
             .asDriver(onErrorJustReturn: [])
             .drive(onNext: { [unowned self] in
                 self.data.accept(self.data.value + $0)
+            }).disposed(by: db)
+        
+        selectedIndexPath.asObservable()
+            .map { $0.row }
+            .subscribe(onNext: { row in
+                self.hash.onNext(self.data.value[row].hash)
             }).disposed(by: db)
     }
 }

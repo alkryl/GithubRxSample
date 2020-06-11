@@ -19,6 +19,7 @@ class Navigator {
         case language(BehaviorRelay<String>)
         case list(String)
         case description(String)
+        case code(String, String)
     }
     
     //MARK: Methods
@@ -50,6 +51,12 @@ class Navigator {
             let vc = DescriptionViewController.createWith(navigator: self,
                                                           storyboard: storyboard,
                                                           viewModel: vm)
+            show(target: vc, sender: sender)
+        case .code(let repo, let hash):
+            let vm = CodeViewModel(name: repo, hash: hash)
+            let vc = CodeViewController.createWith(navigator: self,
+                                                  storyboard: storyboard,
+                                                   viewModel: vm)
             show(target: vc, sender: sender)
         }
     }

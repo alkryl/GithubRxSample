@@ -211,6 +211,40 @@
             </objects>
             <point key="canvasLocation" x="1688" y="116"/>
         </scene>
+        <!--Code View Controller-->
+        <scene sceneID="Eie-yR-phV">
+            <objects>
+                <viewController storyboardIdentifier="CodeViewController" id="OVO-un-UrN" customClass="CodeViewController" customModule="GithubRxSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pKN-z8-VOs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="up0-jT-eiv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="vQz-bt-EkQ" firstAttribute="trailing" secondItem="up0-jT-eiv" secondAttribute="trailing" id="2aY-lv-gfE"/>
+                            <constraint firstAttribute="bottom" secondItem="up0-jT-eiv" secondAttribute="bottom" id="4on-hj-xoH"/>
+                            <constraint firstItem="up0-jT-eiv" firstAttribute="leading" secondItem="vQz-bt-EkQ" secondAttribute="leading" id="FK8-ps-JYe"/>
+                            <constraint firstItem="up0-jT-eiv" firstAttribute="top" secondItem="pKN-z8-VOs" secondAttribute="top" id="FvR-es-n22"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vQz-bt-EkQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="up0-jT-eiv" id="Mu4-9J-DGh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7t7-nN-hoq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2534" y="120"/>
+        </scene>
     </scenes>
     <resources>
         <image name="tap" width="100" height="100"/>

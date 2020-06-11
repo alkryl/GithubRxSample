@@ -36,7 +36,7 @@ extension APIService {
         case commits(String)
     }
     
-    private struct API {
+    struct API {
         fileprivate static func repositories(_ language: String, page: Int) -> Observable<String> {
             return Observable.just("https://api.github.com/search/repositories?" +
                                    "q=language:\(language)" +
@@ -47,6 +47,13 @@ extension APIService {
         
         fileprivate static func commits(_ repo: String) -> Observable<String> {
             return Observable.just("https://api.github.com/repos/\(repo)/commits")
+        }
+        
+        static func commitRequest(repo: String, hash: String) -> Observable<URLRequest> {
+            return Observable.just("https://github.com/\(repo)/commit/\(hash)")
+                .map { URL(string: $0) }
+                .unwrap()
+                .map { URLRequest(url: $0) }
         }
     }
 }
