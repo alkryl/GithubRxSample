@@ -52,8 +52,8 @@ class ListViewController: UIViewController {
     
     private func prepareTableView() {
         tableView.backgroundView = indicator
-        tableView.register(UINib(nibName: "RepositoryCell", bundle: Bundle.main),
-                           forCellReuseIdentifier: "RepositoryCell")
+        tableView.register(UINib(nibName: RepositoryCell.cellID, bundle: Bundle.main),
+                           forCellReuseIdentifier: RepositoryCell.cellID)
     }
     
     private func bindUI() {

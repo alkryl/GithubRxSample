@@ -43,8 +43,8 @@ class DescriptionViewController: UIViewController {
     
     private func prepareTableView() {
         tableView.backgroundView = indicator
-        tableView.register(UINib(nibName: "CommitCell", bundle: Bundle.main),
-                           forCellReuseIdentifier: "CommitCell")
+        tableView.register(UINib(nibName: CommitCell.cellID, bundle: Bundle.main),
+                           forCellReuseIdentifier: CommitCell.cellID)
     }
     
     private func bindUI() {
