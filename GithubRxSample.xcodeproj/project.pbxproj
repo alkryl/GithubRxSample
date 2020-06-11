@@ -53,6 +53,7 @@
 		D0D5635E24922DA2000C2FF0 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D5635D24922DA2000C2FF0 /* CodeViewController.swift */; };
 		D0D5636024922E81000C2FF0 /* CodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D5635F24922E81000C2FF0 /* CodeViewModel.swift */; };
 		D0D5636224924112000C2FF0 /* UIViewController+RxAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D5636124924112000C2FF0 /* UIViewController+RxAlert.swift */; };
+		D0D563642492489B000C2FF0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D0D563632492489B000C2FF0 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		D0D5635D24922DA2000C2FF0 /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		D0D5635F24922E81000C2FF0 /* CodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewModel.swift; sourceTree = "<group>"; };
 		D0D5636124924112000C2FF0 /* UIViewController+RxAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+RxAlert.swift"; sourceTree = "<group>"; };
+		D0D563632492489B000C2FF0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 		D0D083F8247D389A00611245 = {
 			isa = PBXGroup;
 			children = (
+				D0D563632492489B000C2FF0 /* README.md */,
 				D0D08403247D389A00611245 /* GithubRxSample */,
 				D0D08402247D389A00611245 /* Products */,
 				B08FA5220B3ACE211CB17896 /* Pods */,
@@ -356,6 +359,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0D563642492489B000C2FF0 /* README.md in Resources */,
 				D0D08411247D389B00611245 /* LaunchScreen.storyboard in Resources */,
 				D00BBBA8248A8578000B31F8 /* CommitCell.xib in Resources */,
 				D0D0840E247D389B00611245 /* Assets.xcassets in Resources */,
