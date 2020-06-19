@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class RepositoryCell: UITableViewCell {
     
@@ -23,15 +25,30 @@ class RepositoryCell: UITableViewCell {
     @IBOutlet weak var languageView: LanguageCircleView!
     @IBOutlet weak var starsLabel: StarsLabel!
     
-    //MARK: Methods
+    //MARK: Instances
     
-    func configure(with model: Repository) {
-        nameLabel.name.accept(model.name)
-        descriptionLabel.descr.accept(model.description)
-        avatarImageView.urlString.accept(model.owner.avatar)
-        privateImageView.isPrivate.accept(model.private)
-        loginLabel.login.accept(model.owner.login)
-        languageView.language.accept(model.language)
-        starsLabel.stars.accept(model.stars)
+    private let db = DisposeBag()
+    var viewModel = PublishSubject<RepoCellViewModel>()
+    
+    //MARK: Initialization
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        viewModel
+            .subscribe(onNext: { [unowned self] viewModel in
+                self.updateUI(viewModel.repo)
+            }).disposed(by: db)
+    }
+    
+    //MARK: Private
+    
+    private func updateUI(_ repository: Repository) {
+        nameLabel.name.accept(repository.name)
+        descriptionLabel.descr.accept(repository.description)
+        avatarImageView.urlString.accept(repository.owner.avatar)
+        privateImageView.isPrivate.accept(repository.private)
+        loginLabel.login.accept(repository.owner.login)
+        languageView.language.accept(repository.language)
+        starsLabel.stars.accept(repository.stars)
     }
 }

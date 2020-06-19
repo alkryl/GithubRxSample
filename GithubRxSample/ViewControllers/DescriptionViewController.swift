@@ -61,21 +61,24 @@ class DescriptionViewController: UIViewController {
         viewModel.tableData
             .do(onNext: { [unowned self] _ in
                 self.tableView.separatorStyle = .singleLine
-            }).drive(tableView.rx.items(cellIdentifier: CommitCell.cellID, cellType: CommitCell.self)) { _, model, cell in
-                cell.configure(with: model)
+            }).drive(tableView.rx.items(cellIdentifier: CommitCell.cellID,
+                                        cellType: CommitCell.self)) { _, model, cell in
+                cell.viewModel.onNext(CommitCellViewModel(model))
             }.disposed(by: db)
         
         tableView.rx.itemSelected
             .do(onNext: { [unowned self] indexPath in
                 self.tableView.deselectRow(at: indexPath, animated: true)
-                self.viewModel.selectedIndexPath.onNext(indexPath)
-            }).subscribe()
+            }).subscribe(onNext: { [unowned self] indexPath in
+                self.viewModel.updatePath(indexPath)
+            })
             .disposed(by: db)
         
         viewModel.hash
-            .subscribe(onNext: { [unowned self] (hash) in
+            .do(onNext: { [unowned self] (hash) in
                 self.showCodeOnGithub(with: hash)
-            }).disposed(by: db)
+            }).subscribe()
+            .disposed(by: db)
     }
     
     private func showCodeOnGithub(with hash: String) {

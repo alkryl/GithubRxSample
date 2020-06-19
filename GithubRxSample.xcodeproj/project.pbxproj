@@ -54,6 +54,8 @@
 		D0D5636024922E81000C2FF0 /* CodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D5635F24922E81000C2FF0 /* CodeViewModel.swift */; };
 		D0D5636224924112000C2FF0 /* UIViewController+RxAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D5636124924112000C2FF0 /* UIViewController+RxAlert.swift */; };
 		D0D563642492489B000C2FF0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D0D563632492489B000C2FF0 /* README.md */; };
+		D0E197E8249CEECD00F68E7B /* RepoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E197E7249CEECD00F68E7B /* RepoCellViewModel.swift */; };
+		D0E197EA249CF84600F68E7B /* CommitCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E197E9249CF84600F68E7B /* CommitCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +110,8 @@
 		D0D5635F24922E81000C2FF0 /* CodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewModel.swift; sourceTree = "<group>"; };
 		D0D5636124924112000C2FF0 /* UIViewController+RxAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+RxAlert.swift"; sourceTree = "<group>"; };
 		D0D563632492489B000C2FF0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D0E197E7249CEECD00F68E7B /* RepoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCellViewModel.swift; sourceTree = "<group>"; };
+		D0E197E9249CF84600F68E7B /* CommitCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +257,8 @@
 				D0D08423247D3B7B00611245 /* ListViewModel.swift */,
 				D0D08425247D3B8D00611245 /* DescriptionViewModel.swift */,
 				D0D5635F24922E81000C2FF0 /* CodeViewModel.swift */,
+				D0E197E7249CEECD00F68E7B /* RepoCellViewModel.swift */,
+				D0E197E9249CF84600F68E7B /* CommitCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -417,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E197E8249CEECD00F68E7B /* RepoCellViewModel.swift in Sources */,
 				D0D0842B247D3E1600611245 /* UIStoryboard+.swift in Sources */,
 				D0D5635E24922DA2000C2FF0 /* CodeViewController.swift in Sources */,
 				D0D08433247EAFDB00611245 /* MainViewController.swift in Sources */,
@@ -457,6 +464,7 @@
 				D0D0841B247D3A8000611245 /* LanguageViewController.swift in Sources */,
 				D00BBB9C2487AC64000B31F8 /* PrivateImageView.swift in Sources */,
 				D00BBB9E2487B125000B31F8 /* AvatarImageView.swift in Sources */,
+				D0E197EA249CF84600F68E7B /* CommitCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

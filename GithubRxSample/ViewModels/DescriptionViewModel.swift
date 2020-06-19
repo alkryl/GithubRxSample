@@ -45,4 +45,10 @@ class DescriptionViewModel {
                 self.hash.onNext(self.data.value[row].hash)
             }).disposed(by: db)
     }
+    
+    //MARK: Methods
+    
+    func updatePath(_ path: IndexPath) {
+        selectedIndexPath.onNext(path)
+    }
 }

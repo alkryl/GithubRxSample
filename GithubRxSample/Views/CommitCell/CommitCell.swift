@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CommitCell: UITableViewCell {
 
@@ -21,13 +23,28 @@ class CommitCell: UITableViewCell {
     @IBOutlet weak var dateLabel: DateLabel!
     @IBOutlet weak var hashLabel: HashLabel!
     
-    //MARK: Methods
+    //MARK: Instances
     
-    func configure(with model: Item) {
-        messageLabel.message.accept(model.commit.message)
-        loginLabel.login.accept(model.author?.login)
-        dateLabel.date.accept(model.commit.author.date)
-        hashLabel.commitHash.accept(model.hash)
-        authorImageView.updateUrl(string: model.author?.avatar)
+    private let db = DisposeBag()
+    var viewModel = PublishSubject<CommitCellViewModel>()
+    
+    //MARK: Initialization
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        viewModel
+            .subscribe(onNext: { [unowned self] (viewModel) in
+                self.updateUI(viewModel.commit)
+            }).disposed(by: db)
+    }
+        
+    //MARK: Private
+    
+    private func updateUI(_ commit: Item) {
+        messageLabel.message.accept(commit.commit.message)
+        loginLabel.login.accept(commit.author?.login)
+        dateLabel.date.accept(commit.commit.author.date)
+        hashLabel.commitHash.accept(commit.hash)
+        authorImageView.updateUrl(string: commit.author?.avatar)
     }
 }

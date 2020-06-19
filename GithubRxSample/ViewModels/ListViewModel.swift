@@ -14,8 +14,8 @@ class ListViewModel {
     
     private let db = DisposeBag()
     private var data = BehaviorRelay(value: [Repository]())
+    private var page = BehaviorRelay(value: 1)
     
-    var page = BehaviorRelay(value: 1)
     var selectedIndexPath = BehaviorRelay(value: IndexPath())
     
     var tableData: Driver<[Repository]> {
@@ -36,5 +36,15 @@ class ListViewModel {
             .drive(onNext: { [unowned self] in
                 self.data.accept(self.data.value + $0)
             }).disposed(by: db)
+    }
+    
+    //MARK: Methods
+    
+    func updatePage() {
+        page.accept(page.value + 1)
+    }
+    
+    func updatePath(_ path: IndexPath) {
+        selectedIndexPath.accept(path)
     }
 }

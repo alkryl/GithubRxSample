@@ -75,7 +75,7 @@ class ListViewController: UIViewController {
             })
             .drive(tableView.rx.items(cellIdentifier: RepositoryCell.cellID,
                                       cellType: RepositoryCell.self)) { _, model, cell in
-                cell.configure(with: model)
+                cell.viewModel.onNext(RepoCellViewModel(model))
             }.disposed(by: db)
                 
         let countObservable = viewModel.tableData.asObservable().map { $0.count }
@@ -86,14 +86,14 @@ class ListViewController: UIViewController {
             .map { $1 }
             .distinctUntilChanged()
             .subscribe(onNext: { [unowned self] _ in
-                self.viewModel.page.accept(self.viewModel.page.value + 1)
+                self.viewModel.updatePage()
             }).disposed(by: db)
         
         tableView.rx.itemSelected
             .do(onNext: { [unowned self] indexPath in
                 self.tableView.deselectRow(at: indexPath, animated: true)
             }).subscribe(onNext: { [unowned self] in
-                self.viewModel.selectedIndexPath.accept($0)
+                self.viewModel.updatePath($0)
             }).disposed(by: db)
         
         viewModel.selectedIndexPath.asDriver()
@@ -106,7 +106,8 @@ class ListViewController: UIViewController {
 }
 
 extension ListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
         return RepositoryCell.cellHeight
     }
 }
