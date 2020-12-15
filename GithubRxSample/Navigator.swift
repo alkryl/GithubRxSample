@@ -9,11 +9,7 @@
 import RxSwift
 import RxCocoa
 
-class Navigator {
-    lazy private var defaultStoryboard = UIStoryboard(name: "Main", bundle: nil)
-    
-    //MARK: Segues
-    
+extension Navigator {
     enum Segue {
         case main
         case language(BehaviorRelay<String>)
@@ -21,6 +17,10 @@ class Navigator {
         case description(String)
         case code(String, String)
     }
+}
+
+class Navigator {
+    private lazy var defaultStoryboard = UIStoryboard(name: "Main", bundle: nil)
     
     //MARK: Methods
     
