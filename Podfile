@@ -15,6 +15,13 @@ target 'GithubRxSample' do
     pod "RxKingfisher"
     pod "RxGesture"
     
+    pod 'Moya/RxSwift', '~> 14.0'
+    pod 'ObjectMapper', '~> 4.2.0'
+    pod 'Moya-ObjectMapper'
+    pod 'Moya-ObjectMapper/RxSwift'
+    
+    pod 'R.swift'
+    
   # Animations
     pod 'Motion'
 
