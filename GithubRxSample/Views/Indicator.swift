@@ -12,26 +12,32 @@ class Indicator: UIActivityIndicatorView {
     
     //MARK: Initialization
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        createUI()
-    }
-    
     override init(style: UIActivityIndicatorView.Style) {
         super.init(style: style)
-        createUI()
+        
+        self.customize(style)
+        start()
     }
     
     required init(coder: NSCoder) {
         super.init(coder: coder)
     }
     
+    //MARK: Methods
+    
+    func start() {
+        startAnimating()
+    }
+    
+    func stop() {
+        stopAnimating()
+    }
+    
     //MARK: Private
     
-    private func createUI() {
-        style = .medium
+    private func customize(_ viewStyle: UIActivityIndicatorView.Style) {
+        style = viewStyle
         color = .darkGray
-        startAnimating()
         hidesWhenStopped = true
     }
 }
