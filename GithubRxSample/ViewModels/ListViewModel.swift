@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Moya
 
 class ListViewModel {
     
@@ -28,14 +29,51 @@ class ListViewModel {
     //MARK: Initialization
     
     init(language: String) {
+        let configuration = NetworkLoggerPlugin.Configuration(logOptions: [.requestMethod, .successResponseBody])
+        let plugin = NetworkLoggerPlugin(configuration: configuration)
+        let provider = MoyaProvider<APIClient>(plugins: [plugin])
+        
+//        page.asObservable()
+////            .flatMap { APIService().getData(.repositories(language, $0)) }
+//            .flatMap {
+//                provider.request(.repositories(lang: <#T##String#>, page: <#T##Int#>), completion: <#T##Completion##Completion##(Result<Response, MoyaError>) -> Void#>)
+//
+//
+//            }
+//            .flatMap { ($0.deserialize() as Observable<Repositories>) }
+//            .map { $0.items }
+//            .asDriver(onErrorJustReturn: [])
+//            .drive(onNext: { [unowned self] in
+//                self.data.accept(self.data.value + $0)
+//            }).disposed(by: db)
+
         page.asObservable()
-            .flatMap { APIService().getData(.repositories(language, $0)) }
-            .flatMap { ($0.deserialize() as Observable<Repositories>) }
-            .map { $0.items }
-            .asDriver(onErrorJustReturn: [])
-            .drive(onNext: { [unowned self] in
-                self.data.accept(self.data.value + $0)
-            }).disposed(by: db)
+            .flatMap { provider.rx.request(.repositories(language, page: $0)) }
+            .subscribe { response in
+                switch response {
+                case .next(let response):
+                    print(response)
+                case .error(let error):
+                    break
+                default: break
+                }
+            }
+//            .subscribe { event in
+//                switch event {
+//                case .success(let response):
+//                    // do something with the data
+//                break
+//                case .error(let error):
+//                    // handle the error
+//                break
+//                }
+//            }
+            .disposed(by: db)
+        
+    }
+    
+    private func getRepositories(with page: Int) {
+        
     }
     
     //MARK: Methods
