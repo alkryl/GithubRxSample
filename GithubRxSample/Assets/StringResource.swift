@@ -12,3 +12,9 @@ struct Text {
     static let error = "Error"
     static let dequeueError = "Failed to dequeue cell"
 }
+
+struct File {
+    enum Extension {
+        static let json = "json"
+    }
+}
