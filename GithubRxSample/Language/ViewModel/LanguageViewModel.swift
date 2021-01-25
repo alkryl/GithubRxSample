@@ -6,29 +6,38 @@
 //  Copyright © 2020 Alexander Krylov. All rights reserved.
 //
 
-import Foundation
 import RxSwift
 import RxCocoa
 
-class LanguageViewModel {
+struct LanguageViewModel: Subscriber {
+    
+    //MARK: Rx
     
     private let db = DisposeBag()
-    private let model = Languages()
     
-    let languages: Observable<[String]>
-    var selectedRow = PublishSubject<Int>()
     private let selectedLanguage: BehaviorRelay<String>
+    private(set) var languages: Observable<[String]>
+    
+    var selectedRow = PublishSubject<Int>()
+    
+    //MARK: Properties
+    
+    private let model = Language()
     
     //MARK: Initialization
     
     init(language: BehaviorRelay<String>) {
-        self.selectedLanguage = language
-        
+        selectedLanguage = language
         languages = Observable.from(optional: model.languages)
-        
-        selectedRow.asObservable()
-            .subscribe(onNext: { [unowned self] row in
-                self.selectedLanguage.accept(self.model.languages[row])
+        subscribe()
+    }
+    
+    //MARK: Subscriber
+    
+    func subscribe() {
+        selectedRow
+            .subscribe(onNext: {
+                selectedLanguage.accept(model.languages[$0])
             }).disposed(by: db)
     }
 }

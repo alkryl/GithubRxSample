@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LanguageViewController: UIViewController {
+final class LanguageViewController: UIViewController {
     
     private var navigator: Navigator!
     private var viewModel: LanguageViewModel!
@@ -27,33 +27,37 @@ class LanguageViewController: UIViewController {
     
     //MARK: Outlets
     
-    @IBOutlet weak var languagePicker: UIPickerView!
-    @IBOutlet weak var confirmButton: ConfirmButton!
+    @IBOutlet private weak var languagePicker: UIPickerView!
+    @IBOutlet private weak var confirmButton: ConfirmButton!
     
     //MARK: ViewController lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindUI()
+        subscribe()
     }
-    
-    //MARK: Bindings
-    
-    private func bindUI() {
+}
+
+//MARK: Subscriber
+
+extension LanguageViewController: Subscriber {
+    func subscribe() {
         viewModel.languages
             .bind(to: languagePicker.rx.itemTitles) { String($1) }
             .disposed(by: db)
         
-        let tapObservable = confirmButton.rx.tap.share()
+        let tapEvent = confirmButton.rx.tap.share()
         
-        tapObservable
-            .map { [unowned self] in
-                self.languagePicker.selectedRow(inComponent: 0)
+        tapEvent
+            .map { [weak self] in
+                guard let self = self else { return .zero }
+                return self.languagePicker.selectedRow(inComponent: .zero)
             }.bind(to: viewModel.selectedRow)
             .disposed(by: db)
         
-        tapObservable
-            .subscribe(onNext: { [unowned self] in
+        tapEvent
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.navigator.dismissModalController(self)
             }).disposed(by: db)
     }

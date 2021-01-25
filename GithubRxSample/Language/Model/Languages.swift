@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct Languages {
-    private let languagesArray: Array<LanguagesEnum> = [.swift, .objectiveC, .assembly,
-                                                        .javaScript, .python, .java,
-                                                        .html, .c]
+struct Language {
+    private let array: Array<Types> =
+        [.swift, .objectiveC, .assembly, .javaScript, .python, .java, .html, .c]
+    
     var languages: [String] {
-        return languagesArray.map { $0.rawValue }
+        return array.map { $0.rawValue }
     }
 }
 
-extension Languages {
-    enum LanguagesEnum: String {
+extension Language {
+    enum Types: String {
         case swift      = "Swift"
         case objectiveC = "Objective-C"
         case assembly   = "Assembly"
