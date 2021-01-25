@@ -6,11 +6,12 @@
 //  Copyright © 2020 Alexander Krylov. All rights reserved.
 //
 
-import Foundation
 import RxSwift
 import RxCocoa
 
 struct MainViewModel {
     
-    var selectedLanguage = BehaviorRelay(value: "")
+    //MARK: Rx
+    
+    private(set) var selectedLanguage = BehaviorRelay<String>(value: .empty)
 }

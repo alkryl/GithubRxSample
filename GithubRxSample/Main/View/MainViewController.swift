@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxGesture
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
     private var navigator: Navigator!
     private var viewModel: MainViewModel!
@@ -28,51 +28,46 @@ class MainViewController: UIViewController {
     
     //MARK: Outlets
     
-    @IBOutlet weak var chooseView: ChooseView!
+    @IBOutlet private weak var chooseView: ChooseView!
     
     //MARK: ViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindUI()
+        subscribe()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        title = "Main"
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        chooseView.animate { [weak self] in
-            self?.chooseView.hideSubviews.onNext(false)
-        }
+        hideNavigationBar(true, animated: false)
+        chooseView.animate()
     }
     
     //MARK: Private
     
-    private func bindUI() {
-        viewModel.selectedLanguage.asObservable()
-            .filter { $0.count > 0 }
-            .do(onNext: { language in
+    private func handleTap() {
+        chooseView.animate(with: { [weak self] in
+            guard let self = self else { return }
+            self.navigator.show(.language(self.viewModel.selectedLanguage),
+                                sender: self)
+        })
+    }
+}
+
+extension MainViewController: Subscriber {
+    func subscribe() {
+        viewModel.selectedLanguage
+            .filter { !$0.isEmpty }
+            .do(onNext: { [weak self] language in
+                guard let self = self else { return }
                 self.navigator.show(.list(language), sender: self)
             }).subscribe()
             .disposed(by: db)
         
         chooseView.rx.tapGesture()
             .when(.recognized)
-            .subscribe(onNext: { (tap) in
-                self.handleTap(tap)
+            .subscribe(onNext: { [weak self] _ in
+                self?.handleTap()
             }).disposed(by: db)
-    }
-    
-    private func handleTap(_ sender: UITapGestureRecognizer) {
-        chooseView.hideSubviews.onNext(true)
-        let handler: () -> () = { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.navigator.show(.language(strongSelf.viewModel.selectedLanguage),
-                                      sender: strongSelf)
-        }
-        chooseView.animate(scale: 2.5, size: CGSize(width: 100, height: 65),
-                           radius: 10.0, handler)
     }
 }
