@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class ListViewController: UIViewController {
+final class ListViewController: UIViewController {
         
     private var navigator: Navigator!
     private var viewModel: ListViewModel!

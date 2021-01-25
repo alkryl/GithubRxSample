@@ -21,7 +21,7 @@ import UIKit
     
     func update(with language: AnyHashable) {
         backgroundColor = {
-            switch Language(rawValue: language as! String) ?? .other {
+            switch Language.Types(rawValue: language as! String) ?? .other {
             case .swift:      return R.color.swift()
             case .objectiveC: return R.color.objectiveC()
             case .assembly:   return R.color.assembly()
