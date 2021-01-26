@@ -69,8 +69,7 @@ final class CommitsViewModel: ViewModelProtocol {
 extension CommitsViewModel {
     var title: Driver<String> {
         return Driver.just(repository)
-            .map { $0.components(separatedBy: "/").last }
-            .unwrap()
+            .map { $0.components(separatedBy: "/").last.orEmpty }
     }
 }
 

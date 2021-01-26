@@ -99,7 +99,7 @@ extension ListViewController: Subscriber {
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: db)
         
-        let countObservable = viewModel.dataSections.map{ $0.first?.items.count }.unwrap()
+        let countObservable = viewModel.dataSections.map{ ($0.first?.items.count).orEmpty }
         let displayCellObservable = tableView.rx.willDisplayCell.map { $1.row }
         
         Observable.combineLatest(countObservable, displayCellObservable)
