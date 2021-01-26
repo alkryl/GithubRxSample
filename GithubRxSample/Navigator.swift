@@ -47,8 +47,8 @@ class Navigator {
                                                    viewModel: vm)
             show(target: vc, sender: sender)
         case .description(let repo):
-            let vm = DescriptionViewModel(repository: repo)
-            let vc = DescriptionViewController.createWith(navigator: self,
+            let vm = CommitsViewModel(repository: repo)
+            let vc = CommitsViewController.createWith(navigator: self,
                                                           storyboard: storyboard,
                                                           viewModel: vm)
             show(target: vc, sender: sender)
