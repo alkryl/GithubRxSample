@@ -35,9 +35,7 @@ final class ListViewController: UIViewController {
                 let item: Repository = item
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.repositoryCell, for: path)
                 else {
-                    self?.showAlert(title: Text.error, description: Text.dequeueError)
-                        .subscribe()
-                        .disposed(by: (self?.db).orDefault)
+                    self?.viewModel.showError(.dequeue(reason: Text.dequeueError))
                     return UITableViewCell()
                 }
                 cell.viewModel = RepoCellViewModel(item)
@@ -126,7 +124,7 @@ extension ListViewController: Subscriber {
             }).drive()
             .disposed(by: db)
         
-        viewModel.showError
+        viewModel.errorSubject
             .map { err -> String in
                 if case let .obtaining(reason) = err {
                     return reason

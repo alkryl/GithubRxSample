@@ -8,7 +8,7 @@
 
 struct RepoCellViewModel {
     
-    private var repository: Repository!
+    private var repository: Repository
     
     //MARK: Initialization
     

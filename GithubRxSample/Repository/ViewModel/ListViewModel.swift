@@ -11,7 +11,7 @@ import RxCocoa
 import Moya
 import Moya_ObjectMapper
 
-final class ListViewModel: Subscriber {
+final class ListViewModel: ViewModelProtocol {
     
     //MARK: Rx
     
@@ -21,7 +21,7 @@ final class ListViewModel: Subscriber {
     private(set) var selectedIndexPath = BehaviorRelay(value: IndexPath())
     private(set) var pageRelay = BehaviorRelay(value: 1)
     private(set) var dataRelay = BehaviorRelay(value: [Repository]())
-    private(set) var showError = PublishSubject<SampleError>()
+    private(set) var errorSubject = PublishSubject<SampleError>()
 
     //MARK: Properties
     
@@ -42,29 +42,6 @@ final class ListViewModel: Subscriber {
         subscribe()
     }
     
-    //MARK: Subscriber
-    
-    func subscribe() {
-        pageRelay
-            .flatMap { self.provider.rx.request(.repositories(self.language, $0)) }
-            .mapObject(Repositories.self)
-            .catchError { [weak self] error in
-                self?.didObtainError(error)
-                return Observable.empty()
-            }
-            .subscribe { [weak self] event in
-                switch event {
-                case .next(let repositories):
-                    guard let self = self, let items = repositories.items else { return }
-                    self.didObtainRepositories(items)
-                case .error(let error):
-                    self?.didObtainError(error)
-                default: break
-                }
-            }
-            .disposed(by: db)
-    }
-    
     //MARK: Methods
     
     func updatePage() {
@@ -75,6 +52,10 @@ final class ListViewModel: Subscriber {
         selectedIndexPath.accept(path)
     }
     
+    func showError(_ type: SampleError) {
+        errorSubject.onNext(type)
+    }
+    
     //MARK: Handlers
     
     private func didObtainRepositories(_ items: [Repository]) {
@@ -83,9 +64,8 @@ final class ListViewModel: Subscriber {
         dataSections.accept([sections])
     }
     
-    private func didObtainError(_ error: Error) {
-        let customError = SampleError.obtaining(reason: error.localizedDescription)
-        showError.onNext(customError)
+    private func didObtainError(_ type: SampleError) {
+        showError(type)
     }
 }
 
@@ -101,4 +81,27 @@ extension ListViewModel {
     }
 }
 
+//MARK: Subscriber
 
+extension ListViewModel: Subscriber {
+    func subscribe() {
+        pageRelay
+            .flatMap { self.provider.rx.request(.repositories(self.language, $0)) }
+            .mapObject(Repositories.self)
+            .catchError { [weak self] error in
+                self?.didObtainError(.mapping(reason: error.localizedDescription))
+                return Observable.empty()
+            }
+            .subscribe { [weak self] event in
+                switch event {
+                case .next(let repositories):
+                    guard let self = self, let items = repositories.items else { return }
+                    self.didObtainRepositories(items)
+                case .error(let error):
+                    self?.didObtainError(.obtaining(reason: error.localizedDescription))
+                default: break
+                }
+            }
+            .disposed(by: db)
+    }
+}
