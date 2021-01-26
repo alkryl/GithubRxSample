@@ -11,7 +11,7 @@ import RxCocoa
 import Moya
 import Moya_ObjectMapper
 
-final class CommitsViewModel: ViewModelProtocol {
+final class CommitsViewModel {
     
     //MARK: Rx
     

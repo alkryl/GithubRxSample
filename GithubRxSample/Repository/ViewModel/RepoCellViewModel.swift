@@ -49,9 +49,9 @@ extension RepoCellViewModel {
     }
 }
 
-//MARK: Methods
+//MARK: CellViewModelProtocol
 
-extension RepoCellViewModel {
+extension RepoCellViewModel: CellViewModelProtocol {
     private enum Tag: Int {
         case avatar = 0, name, description, login, stars, access, language
     }

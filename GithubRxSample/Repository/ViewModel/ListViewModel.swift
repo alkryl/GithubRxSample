@@ -11,7 +11,7 @@ import RxCocoa
 import Moya
 import Moya_ObjectMapper
 
-final class ListViewModel: ViewModelProtocol {
+final class ListViewModel {
     
     //MARK: Rx
     

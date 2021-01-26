@@ -18,9 +18,6 @@ protocol Subscriber {
     func update(with: AnyHashable)
 }
 
-protocol ViewModelProtocol {
-    var provider: MoyaProvider<APIClient> { get set }
-    
-    func updatePath(_ path: IndexPath)
-    func showError(_ type: SampleError)
+protocol CellViewModelProtocol {
+    func parameter(for tag: Int) -> AnyHashable?
 }

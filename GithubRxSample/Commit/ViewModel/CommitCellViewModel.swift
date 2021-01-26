@@ -41,9 +41,9 @@ extension CommitCellViewModel {
     }
 }
 
-//MARK: Methods
+//MARK: CellViewModelProtocol
 
-extension CommitCellViewModel {
+extension CommitCellViewModel: CellViewModelProtocol {
     private enum Tag: Int {
         case message = 0, avatar, login, date, hash
     }

@@ -406,8 +406,6 @@
 		D0D08403247D389A00611245 /* GithubRxSample */ = {
 			isa = PBXGroup;
 			children = (
-				D0D08404247D389A00611245 /* AppDelegate.swift */,
-				D0D08406247D389A00611245 /* SceneDelegate.swift */,
 				D0D08427247D3C3E00611245 /* Navigator.swift */,
 				D05E8A1825962F0F0097B685 /* Protocols */,
 				D0D0842C247E8EAD00611245 /* Networking */,
@@ -426,6 +424,8 @@
 		D0D08418247D3A2200611245 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				D0D08404247D389A00611245 /* AppDelegate.swift */,
+				D0D08406247D389A00611245 /* SceneDelegate.swift */,
 				D0D0840D247D389B00611245 /* Assets.xcassets */,
 				D05E8A292596376C0097B685 /* StringResource.swift */,
 				D07DEDEA25BB04BB00FCED98 /* Error.swift */,
