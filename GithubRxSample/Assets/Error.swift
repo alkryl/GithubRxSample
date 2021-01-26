@@ -10,4 +10,6 @@ import Foundation
 
 enum SampleError: Error {
     case obtaining(reason: String)
+    case mapping(reason: String)
+    case dequeue(reason: String)
 }

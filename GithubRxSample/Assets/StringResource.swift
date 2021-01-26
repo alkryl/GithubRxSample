@@ -8,9 +8,10 @@
 
 struct Text {
     static let repositories = "repositories"
-    
     static let error = "Error"
     static let dequeueError = "Failed to dequeue cell"
+    static let showGithub = "Show on Github?"
+    static let commit = "commited on "
 }
 
 struct File {
