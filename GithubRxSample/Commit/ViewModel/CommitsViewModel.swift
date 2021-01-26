@@ -19,7 +19,6 @@ final class CommitsViewModel: ViewModelProtocol {
     
     private(set) var dataSections = BehaviorRelay<[CommitSection]>(value: [])
     private(set) var selectedIndexPath = PublishSubject<IndexPath>()
-    private(set) var dataRelay = BehaviorRelay(value: [CommitItem]())
     private(set) var hashSubject = PublishSubject<String>()
     private(set) var errorSubject = PublishSubject<SampleError>()
     

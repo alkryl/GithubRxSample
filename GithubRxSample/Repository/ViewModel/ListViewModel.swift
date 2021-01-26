@@ -20,7 +20,6 @@ final class ListViewModel: ViewModelProtocol {
     private(set) var dataSections = BehaviorRelay<[RepositorySection]>(value: [])
     private(set) var selectedIndexPath = BehaviorRelay(value: IndexPath())
     private(set) var pageRelay = BehaviorRelay(value: 1)
-    private(set) var dataRelay = BehaviorRelay(value: [Repository]())
     private(set) var errorSubject = PublishSubject<SampleError>()
 
     //MARK: Properties
@@ -77,7 +76,7 @@ extension ListViewModel {
     }
     
     var repositoryName: String {
-        return dataRelay.value[selectedIndexPath.value.row].fullName.orEmpty
+        return repositories[selectedIndexPath.value.row].fullName.orEmpty
     }
 }
 
