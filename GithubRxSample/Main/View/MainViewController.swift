@@ -40,6 +40,7 @@ final class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideNavigationBar(true, animated: false)
+        hideBackButtonText()
         chooseView.animate()
     }
     

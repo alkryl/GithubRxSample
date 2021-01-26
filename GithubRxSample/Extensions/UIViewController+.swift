@@ -12,4 +12,9 @@ extension UIViewController {
     func hideNavigationBar(_ hide: Bool, animated: Bool = true) {
         navigationController?.setNavigationBarHidden(hide, animated: animated)
     }
+    
+    func hideBackButtonText() {
+        navigationItem.backBarButtonItem =
+            UIBarButtonItem(title: .empty, style: .plain, target: nil, action: nil)
+    }
 }
