@@ -291,16 +291,32 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 2 files.
+  /// This `R.file` struct is generated, and contains static references to 4 files.
   struct file {
     /// Resource file `README.md`.
     static let readmeMd = Rswift.FileResource(bundle: R.hostingBundle, name: "README", pathExtension: "md")
+    /// Resource file `commitInfo.json`.
+    static let commitInfoJson = Rswift.FileResource(bundle: R.hostingBundle, name: "commitInfo", pathExtension: "json")
+    /// Resource file `commits.json`.
+    static let commitsJson = Rswift.FileResource(bundle: R.hostingBundle, name: "commits", pathExtension: "json")
     /// Resource file `repositories.json`.
     static let repositoriesJson = Rswift.FileResource(bundle: R.hostingBundle, name: "repositories", pathExtension: "json")
 
     /// `bundle.url(forResource: "README", withExtension: "md")`
     static func readmeMd(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.readmeMd
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "commitInfo", withExtension: "json")`
+    static func commitInfoJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.commitInfoJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "commits", withExtension: "json")`
+    static func commitsJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.commitsJson
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -452,8 +468,11 @@ struct _R: Rswift.Validatable {
 
   #if os(iOS) || os(tvOS)
   struct nib {
-    struct _CommitCell: Rswift.NibResourceType {
+    struct _CommitCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = CommitCell
+
       let bundle = R.hostingBundle
+      let identifier = "CommitCell"
       let name = "CommitCell"
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> CommitCell? {
@@ -514,7 +533,7 @@ struct _R: Rswift.Validatable {
 
       let bundle = R.hostingBundle
       let codeViewController = StoryboardViewControllerResource<CodeViewController>(identifier: "CodeViewController")
-      let descriptionViewController = StoryboardViewControllerResource<DescriptionViewController>(identifier: "DescriptionViewController")
+      let commitsViewController = StoryboardViewControllerResource<CommitsViewController>(identifier: "CommitsViewController")
       let languageViewController = StoryboardViewControllerResource<LanguageViewController>(identifier: "LanguageViewController")
       let listViewController = StoryboardViewControllerResource<ListViewController>(identifier: "ListViewController")
       let mainViewController = StoryboardViewControllerResource<MainViewController>(identifier: "MainViewController")
@@ -524,8 +543,8 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: codeViewController)
       }
 
-      func descriptionViewController(_: Void = ()) -> DescriptionViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: descriptionViewController)
+      func commitsViewController(_: Void = ()) -> CommitsViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: commitsViewController)
       }
 
       func languageViewController(_: Void = ()) -> LanguageViewController? {
@@ -545,7 +564,7 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.main().codeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'codeViewController' could not be loaded from storyboard 'Main' as 'CodeViewController'.") }
-        if _R.storyboard.main().descriptionViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'descriptionViewController' could not be loaded from storyboard 'Main' as 'DescriptionViewController'.") }
+        if _R.storyboard.main().commitsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'commitsViewController' could not be loaded from storyboard 'Main' as 'CommitsViewController'.") }
         if _R.storyboard.main().languageViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'languageViewController' could not be loaded from storyboard 'Main' as 'LanguageViewController'.") }
         if _R.storyboard.main().listViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'listViewController' could not be loaded from storyboard 'Main' as 'ListViewController'.") }
         if _R.storyboard.main().mainViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mainViewController' could not be loaded from storyboard 'Main' as 'MainViewController'.") }
