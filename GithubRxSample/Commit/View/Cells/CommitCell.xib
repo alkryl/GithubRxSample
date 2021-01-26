@@ -31,13 +31,13 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6s-49-eib" customClass="AuthorLoginLabel" customModule="GithubRxSample" customModuleProvider="target">
-                        <rect key="frame" x="49" y="37.5" width="32" height="16"/>
+                        <rect key="frame" x="49" y="42" width="32" height="16"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZA-KY-ria" customClass="DateLabel" customModule="GithubRxSample" customModuleProvider="target">
-                        <rect key="frame" x="86" y="39" width="25" height="14.5"/>
+                        <rect key="frame" x="86" y="43.5" width="25" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -82,7 +82,6 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="bPX-kT-cFR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iZA-KY-ria" secondAttribute="trailing" constant="8" id="3Uk-nZ-lng"/>
-                    <constraint firstItem="l6s-49-eib" firstAttribute="centerY" secondItem="ueG-AM-dKZ" secondAttribute="centerY" id="8Fc-lk-1jZ"/>
                     <constraint firstItem="iZA-KY-ria" firstAttribute="leading" secondItem="l6s-49-eib" secondAttribute="trailing" constant="5" id="Cfa-Im-4Hr"/>
                     <constraint firstItem="67a-VJ-flM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="D6h-eG-gdb"/>
                     <constraint firstItem="67a-VJ-flM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="I7B-cp-Lb0"/>
@@ -91,6 +90,7 @@
                     <constraint firstItem="bPX-kT-cFR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hfd-x3-FEc"/>
                     <constraint firstItem="ueG-AM-dKZ" firstAttribute="leading" secondItem="67a-VJ-flM" secondAttribute="leading" id="iPL-Ui-KxB"/>
                     <constraint firstItem="l6s-49-eib" firstAttribute="leading" secondItem="ueG-AM-dKZ" secondAttribute="trailing" constant="8" id="p9S-0T-XhM"/>
+                    <constraint firstItem="l6s-49-eib" firstAttribute="bottom" secondItem="ueG-AM-dKZ" secondAttribute="bottom" id="tYz-17-3cZ"/>
                     <constraint firstItem="iZA-KY-ria" firstAttribute="bottom" secondItem="l6s-49-eib" secondAttribute="bottom" id="zGj-Yy-sKQ"/>
                     <constraint firstItem="bPX-kT-cFR" firstAttribute="leading" secondItem="67a-VJ-flM" secondAttribute="trailing" constant="10" id="zV4-1p-Ihc"/>
                 </constraints>
