@@ -15,7 +15,6 @@ class CodeViewController: UIViewController {
     
     private var navigator: Navigator!
     private var viewModel: CodeViewModel!
-    private let db = DisposeBag()
     
     static func createWith(navigator: Navigator,
                            storyboard: UIStoryboard,
@@ -26,27 +25,34 @@ class CodeViewController: UIViewController {
         return vc
     }
     
+    //MARK: Rx
+    
+    private let db = DisposeBag()
+    
     //MARK: Outlets
     
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet private weak var webView: WKWebView!
     
-    //MARK: ViewController lifecycle
+    //MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindUI()
+        subscribe()
     }
-    
-    //MARK: Private
-    
-    private func bindUI() {
+}
+
+//MARK: Subscriber
+
+extension CodeViewController: Subscriber {
+    func subscribe() {
         viewModel.title
             .drive(navigationItem.rx.title)
             .disposed(by: db)
         
         viewModel.request
-            .subscribe(onNext: {
-                self.webView.load($0)
-            }).disposed(by: db)
+            .subscribe { [weak self] request in
+                self?.webView.load(request)
+            }
+            .disposed(by: db)
     }
 }
