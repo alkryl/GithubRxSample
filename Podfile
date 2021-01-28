@@ -11,7 +11,6 @@ target 'GithubRxSample' do
     pod 'RxCocoa'
     pod 'RxDataSources'
     pod 'RxSwiftExt'
-    pod "RxRealm"
     pod "RxKingfisher"
     pod "RxGesture"
     
@@ -21,6 +20,7 @@ target 'GithubRxSample' do
     pod 'Moya-ObjectMapper/RxSwift'
     
     pod 'R.swift'
+    pod 'Swinject'
     
   # Animations
     pod 'Motion'
