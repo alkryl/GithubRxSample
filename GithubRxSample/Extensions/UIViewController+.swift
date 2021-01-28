@@ -18,3 +18,9 @@ extension UIViewController {
             UIBarButtonItem(title: .empty, style: .plain, target: nil, action: nil)
     }
 }
+
+extension UIViewController {
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
