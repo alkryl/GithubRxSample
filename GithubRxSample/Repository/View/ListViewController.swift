@@ -12,18 +12,9 @@ import RxCocoa
 import RxDataSources
 
 final class ListViewController: UIViewController {
-        
-    private var navigator: Navigator!
-    private var viewModel: ListViewModel!
     
-    static func createWith(navigator: Navigator,
-                           storyboard: UIStoryboard,
-                           viewModel: ListViewModel) -> ListViewController {
-        let vc = storyboard.instantiateViewController(ofType: ListViewController.self)
-        vc.navigator = navigator
-        vc.viewModel = viewModel
-        return vc
-    }
+    weak var coordinator: MainCoordinator!
+    var viewModel: ListViewModel!
     
     //MARK: Rx
     
@@ -121,7 +112,8 @@ extension ListViewController: Subscriber {
             .skip(1)
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                self.navigator.show(.description(self.viewModel.repositoryName), sender: self)
+                let name = self.viewModel.repositoryName
+                self.coordinator.show(.description(name))
             }).drive()
             .disposed(by: db)
         

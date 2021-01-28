@@ -12,18 +12,12 @@ import RxCocoa
 
 final class LanguageViewController: UIViewController {
     
-    private var navigator: Navigator!
-    private var viewModel: LanguageViewModel!
-    private let db = DisposeBag()
+    weak var coordinator: MainCoordinator!
+    var viewModel: LanguageViewModel!
     
-    static func createWith(navigator: Navigator,
-                           storyboard: UIStoryboard,
-                           viewModel: LanguageViewModel) -> LanguageViewController {
-        let vc = storyboard.instantiateViewController(ofType: LanguageViewController.self)
-        vc.navigator = navigator
-        vc.viewModel = viewModel
-        return vc
-    }
+    //MARK: Rx
+    
+    private let db = DisposeBag()
     
     //MARK: Outlets
     
@@ -58,7 +52,7 @@ extension LanguageViewController: Subscriber {
         tapEvent
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.navigator.dismissModalController(self)
+                self.coordinator.dismiss(self)
             }).disposed(by: db)
     }
 }

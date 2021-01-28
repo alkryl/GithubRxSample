@@ -13,17 +13,7 @@ import WebKit
 
 class CodeViewController: UIViewController {
     
-    private var navigator: Navigator!
-    private var viewModel: CodeViewModel!
-    
-    static func createWith(navigator: Navigator,
-                           storyboard: UIStoryboard,
-                           viewModel: CodeViewModel) -> CodeViewController {
-        let vc = storyboard.instantiateViewController(ofType: CodeViewController.self)
-        vc.navigator = navigator
-        vc.viewModel = viewModel
-        return vc
-    }
+    var viewModel: CodeViewModel!
     
     //MARK: Rx
     
@@ -52,7 +42,6 @@ extension CodeViewController: Subscriber {
         viewModel.request
             .subscribe { [weak self] request in
                 self?.webView.load(request)
-            }
-            .disposed(by: db)
+            }.disposed(by: db)
     }
 }

@@ -13,18 +13,12 @@ import RxGesture
 
 final class MainViewController: UIViewController {
     
-    private var navigator: Navigator!
-    private var viewModel: MainViewModel!
-    private let db = DisposeBag()
+    weak var coordinator: MainCoordinator!
+    var viewModel: MainViewModel!
     
-    static func createWith(navigator: Navigator,
-                           storyboard: UIStoryboard,
-                           viewModel: MainViewModel) -> MainViewController {
-        let vc = storyboard.instantiateViewController(ofType: MainViewController.self)
-        vc.navigator = navigator
-        vc.viewModel = viewModel
-        return vc
-    }
+    //MARK: Rx
+    
+    private let db = DisposeBag()
     
     //MARK: Outlets
     
@@ -49,8 +43,8 @@ final class MainViewController: UIViewController {
     private func handleTap() {
         chooseView.animate(with: { [weak self] in
             guard let self = self else { return }
-            self.navigator.show(.language(self.viewModel.selectedLanguage),
-                                sender: self)
+            let relay = self.viewModel.selectedLanguage
+            self.coordinator.show(.language(relay))
         })
     }
 }
@@ -60,8 +54,7 @@ extension MainViewController: Subscriber {
         viewModel.selectedLanguage
             .filter { !$0.isEmpty }
             .do(onNext: { [weak self] language in
-                guard let self = self else { return }
-                self.navigator.show(.list(language), sender: self)
+                self?.coordinator.show(.list(language))
             }).subscribe()
             .disposed(by: db)
         

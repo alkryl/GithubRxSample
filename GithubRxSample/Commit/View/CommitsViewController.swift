@@ -13,17 +13,8 @@ import RxDataSources
 
 final class CommitsViewController: UIViewController {
     
-    private var navigator: Navigator!
-    private var viewModel: CommitsViewModel!
-    
-    static func createWith(navigator: Navigator,
-                           storyboard: UIStoryboard,
-                           viewModel: CommitsViewModel) -> CommitsViewController {
-        let vc = storyboard.instantiateViewController(ofType: CommitsViewController.self)
-        vc.navigator = navigator
-        vc.viewModel = viewModel
-        return vc
-    }
+    weak var coordinator: MainCoordinator!
+    var viewModel: CommitsViewModel!
     
     //MARK: Rx
     
@@ -108,7 +99,8 @@ extension CommitsViewController: Subscriber {
         viewModel.hashSubject
             .do(onNext: { [weak self] hash in
                 guard let self = self else { return }
-                self.navigator.show(.code(self.viewModel.repository, hash), sender: self)
+                let name = self.viewModel.repository
+                self.coordinator.show(.code(name, hash))
             }).subscribe()
             .disposed(by: db)
     }

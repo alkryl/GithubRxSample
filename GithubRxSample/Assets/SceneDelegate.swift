@@ -11,7 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    let navigator = Navigator()
+    var dependenciesManager = Dependencies()
     
     //MARK: UISceneDelegate
 
@@ -19,10 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        guard let nav = window?.rootViewController as? UINavigationController
-            else { return }
+        guard let nav = window?.rootViewController as? UINavigationController else { return }
+                
+        let coordinator = dependenciesManager.container.resolve(MainCoordinator.self, argument: nav)
         
-        navigator.show(.main, sender: nav)
+        coordinator?.start()
     }
 }
 
