@@ -26,10 +26,48 @@ class Dependencies {
     //MARK: Private
     
     private func registerCoordinators() {
-        container.register(MainCoordinator.self) { (_, nav: UINavigationController) in
-            let coordinator = MainCoordinator()
-            coordinator.navigationController = nav
+        container.register(AppCoordinator.self) { (_, nav: UINavigationController) in
+            let coordinator = AppCoordinator(navigationController: nav)
             coordinator.container = self.container
+            return coordinator
+        }
+        
+        container.register(MainCoordinator.self) { (_, nav: UINavigationController) in
+            let coordinator = MainCoordinator(navigationController: nav)
+            coordinator.container = self.container
+            return coordinator
+        }
+
+        container.register(LanguageCoordinator.self) { (_, nav: UINavigationController, relay: BehaviorRelay<String>, didFinish: @escaping (Coordinator) -> ()) in
+            let coordinator = LanguageCoordinator(navigationController: nav)
+            coordinator.container = self.container
+            coordinator.languageRelay = relay
+            coordinator.childDidFinish = didFinish
+            return coordinator
+        }
+        
+        container.register(RepositoryCoordinator.self) { (_, nav: UINavigationController, language: String, didFinish: @escaping (Coordinator) -> ()) in
+            let coordinator = RepositoryCoordinator(navigationController: nav)
+            coordinator.container = self.container
+            coordinator.language = language
+            coordinator.childDidFinish = didFinish
+            return coordinator
+        }
+        
+        container.register(CommitCoordinator.self) { (_, nav: UINavigationController, repository: String, didFinish: @escaping (Coordinator) -> ()) in
+            let coordinator = CommitCoordinator(navigationController: nav)
+            coordinator.container = self.container
+            coordinator.repository = repository
+            coordinator.childDidFinish = didFinish
+            return coordinator
+        }
+        
+        container.register(CodeCoordinator.self) { (_, nav: UINavigationController, repository: String, hash: String, didFinish: @escaping (Coordinator) -> ()) in
+            let coordinator = CodeCoordinator(navigationController: nav)
+            coordinator.container = self.container
+            coordinator.repository = repository
+            coordinator.hash = hash
+            coordinator.childDidFinish = didFinish
             return coordinator
         }
     }
@@ -39,35 +77,31 @@ class Dependencies {
             R.storyboard.main().instantiateViewController(identifier: $0)
         }
         
-        container.register(MainViewController.self) { (_, coordinator: MainCoordinator) in
+        container.register(MainViewController.self) { _ in
             let vc = mainStoryboard(MainViewController.identifier) as! MainViewController
-            vc.coordinator = coordinator
             vc.viewModel = MainViewModel()
             return vc
         }.inObjectScope(.container)
         
-        container.register(LanguageViewController.self) { (_, coordinator: MainCoordinator, relay: BehaviorRelay<String>) in
+        container.register(LanguageViewController.self) { (_, relay: BehaviorRelay<String>) in
             let vc = mainStoryboard(LanguageViewController.identifier) as! LanguageViewController
-            vc.coordinator = coordinator
             vc.viewModel = LanguageViewModel(language: relay)
             return vc
-        }
+        }.inObjectScope(.container)
         
-        container.register(ListViewController.self) { (_, coordinator: MainCoordinator, language: String) in
+        container.register(ListViewController.self) { (_, language: String) in
             let vc = mainStoryboard(ListViewController.identifier) as! ListViewController
-            vc.coordinator = coordinator
             vc.viewModel = ListViewModel(language: language)
             return vc
         }
         
-        container.register(CommitsViewController.self) { (_, coordinator: MainCoordinator, name: String) in
+        container.register(CommitsViewController.self) { (_, name: String) in
             let vc = mainStoryboard(CommitsViewController.identifier) as! CommitsViewController
-            vc.coordinator = coordinator
             vc.viewModel = CommitsViewModel(repository: name)
             return vc
         }
         
-        container.register(CodeViewController.self) { (_, coordinator: MainCoordinator, name: String, hash: String) in
+        container.register(CodeViewController.self) { (_, name: String, hash: String) in
             let vc = mainStoryboard(CodeViewController.identifier) as! CodeViewController
             vc.viewModel = CodeViewModel(name: name, hash: hash)
             return vc
