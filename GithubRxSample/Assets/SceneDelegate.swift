@@ -12,6 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var dependenciesManager = Dependencies()
+    var coordinator: Coordinator?
     
     //MARK: UISceneDelegate
 
@@ -21,8 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let nav = window?.rootViewController as? UINavigationController else { return }
                 
-        let coordinator = dependenciesManager.container.resolve(MainCoordinator.self, argument: nav)
-        
+        coordinator = dependenciesManager.container.resolve(AppCoordinator.self, argument: nav)
+
         coordinator?.start()
     }
 }
