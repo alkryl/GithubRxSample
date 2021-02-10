@@ -11,7 +11,7 @@ import RxSwift
 extension UIViewController {
     func showAlert(title: String = .empty,
                    description: String?,
-                   closureToExecute: (() -> ())? = nil) -> Observable<Void> {
+                   closureToExecute: EmptyClosure? = nil) -> Observable<Void> {
         return Observable.create({ [weak self] observer in
             let alert = UIAlertController(title: title,
                                           message: description,

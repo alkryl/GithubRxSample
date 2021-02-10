@@ -86,6 +86,13 @@ private extension APIClient {
             case .commitInfo:   return R.file.commitInfoJson()
             }
         }()
-        return path == nil ? .empty : (try? Data(contentsOf: path!)).orEmpty
+        
+        if path == nil {
+            return .empty
+        }
+        
+        let data = try? Data(contentsOf: path!)
+        
+        return data.orEmpty
     }
 }

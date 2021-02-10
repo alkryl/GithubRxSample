@@ -15,7 +15,7 @@ final class CommitsViewController: UIViewController {
     
     var viewModel: CommitsViewModel!
     var showCodeAction: ((String, String) -> ())?
-    var dismissAction: (() -> ())?
+    var dismissAction: EmptyClosure?
     
     //MARK: Rx
     

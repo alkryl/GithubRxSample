@@ -57,7 +57,7 @@ extension RepositoryCoordinator {
             self?.showCommits(for: repository)
         }
     }
-    private var dismissAction: () -> () {
+    private var dismissAction: EmptyClosure {
         return { [weak self] in
             self?.finish()
         }

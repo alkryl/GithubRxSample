@@ -14,7 +14,7 @@ import WebKit
 class CodeViewController: UIViewController {
     
     var viewModel: CodeViewModel!
-    var dismissAction: (() -> ())?
+    var dismissAction: EmptyClosure?
     
     //MARK: Rx
     

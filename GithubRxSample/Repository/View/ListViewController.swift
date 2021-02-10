@@ -15,7 +15,7 @@ final class ListViewController: UIViewController {
     
     var viewModel: ListViewModel!
     var showCommitsAction: ((String) -> ())?
-    var dismissAction: (() -> ())?
+    var dismissAction: EmptyClosure?
     
     //MARK: Rx
     

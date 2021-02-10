@@ -13,7 +13,7 @@ import RxCocoa
 final class LanguageViewController: UIViewController {
     
     var viewModel: LanguageViewModel!
-    var dismissAction: (() -> ())?
+    var dismissAction: EmptyClosure?
     
     //MARK: Rx
     

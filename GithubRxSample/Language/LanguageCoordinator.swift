@@ -61,7 +61,7 @@ class LanguageCoordinator: Coordinator {
 //MARK: Computed properties
 
 extension LanguageCoordinator {
-    private var dismissAction: () -> () {
+    private var dismissAction: EmptyClosure {
         return { [weak self] in
             self?.finish()
         }

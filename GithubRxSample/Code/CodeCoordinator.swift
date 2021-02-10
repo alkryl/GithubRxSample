@@ -44,7 +44,7 @@ class CodeCoordinator: Coordinator {
 //MARK: Computed properties
 
 extension CodeCoordinator {
-    private var dismissAction: () -> () {
+    private var dismissAction: EmptyClosure {
         return { [weak self] in
             self?.finish()
         }

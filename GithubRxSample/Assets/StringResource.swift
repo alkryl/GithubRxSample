@@ -6,6 +6,8 @@
 //  Copyright © 2020 Alexander Krylov. All rights reserved.
 //
 
+typealias EmptyClosure = (() -> ())
+
 struct Text {
     static let repositories = "repositories"
     static let error = "Error"

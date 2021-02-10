@@ -57,7 +57,7 @@ extension CommitCoordinator {
             self?.showCode(with: name, and: hash)
         }
     }
-    private var dismissAction: () -> () {
+    private var dismissAction: EmptyClosure {
         return { [weak self] in
             self?.finish()
         }

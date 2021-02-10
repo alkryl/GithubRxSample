@@ -40,7 +40,7 @@ import Motion
         }
     }
     
-    func animate(with handler: @escaping () -> ()) {
+    func animate(with handler: @escaping EmptyClosure) {
         hideSubject.onNext(true)
         animateView(scale: 2.5, size: CGSize(width: 100, height: 65), radius: 10.0, handler)
     }
@@ -50,7 +50,7 @@ import Motion
     private func animateView(scale: CGFloat = 1.0,
                  size: CGSize = CGSize(width: 70.0, height: 70.0),
                  radius: CGFloat = 35.0,
-                 _ handler: (() -> ())?) {
+                 _ handler: EmptyClosure?) {
         
         animate([.scale(scale), .size(size), .corner(radius: radius)], completion: handler)
     }
