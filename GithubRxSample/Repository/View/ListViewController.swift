@@ -71,7 +71,7 @@ final class ListViewController: UIViewController {
     
     private func updateUI(with count: Int) {
         tableView.separatorStyle = .singleLine
-        navigationItem.title = "\(count) " + Text.repositories
+        navigationItem.title = viewModel.title(for: count)
         indicator.stop()
     }
 }

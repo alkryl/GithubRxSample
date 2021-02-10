@@ -55,6 +55,10 @@ final class ListViewModel {
         errorSubject.onNext(type)
     }
     
+    func title(for count: Int) -> String {
+        return "\(count) " + Text.repositories
+    }
+    
     //MARK: Handlers
     
     private func didObtainRepositories(_ items: [Repository]) {
