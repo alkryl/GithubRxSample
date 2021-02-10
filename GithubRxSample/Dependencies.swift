@@ -9,6 +9,7 @@
 import Swinject
 import RxSwift
 import RxCocoa
+import Moya
 
 class Dependencies {
     
@@ -19,11 +20,18 @@ class Dependencies {
     //MARK: Initialization
     
     init() {
+        registerProvider()
         registerCoordinators()
         registerControllers()
     }
     
     //MARK: Private
+    
+    private func registerProvider() {
+        container.register(Provider.self) { _ in
+            return APIClient.provider
+        }
+    }
     
     private func registerCoordinators() {
         container.register(AppCoordinator.self) { (_, nav: UINavigationController) in
@@ -89,21 +97,24 @@ class Dependencies {
             return vc
         }.inObjectScope(.container)
         
-        container.register(ListViewController.self) { (_, language: String) in
+        container.register(ListViewController.self) { (r, language: String) in
             let vc = mainStoryboard(ListViewController.identifier) as! ListViewController
-            vc.viewModel = ListViewModel(language: language)
+            let provider = r.resolve(Provider.self)!
+            vc.viewModel = ListViewModel(language: language, provider: provider)
             return vc
         }
         
-        container.register(CommitsViewController.self) { (_, name: String) in
+        container.register(CommitsViewController.self) { (r, name: String) in
             let vc = mainStoryboard(CommitsViewController.identifier) as! CommitsViewController
-            vc.viewModel = CommitsViewModel(repository: name)
+            let provider = r.resolve(Provider.self)!
+            vc.viewModel = CommitsViewModel(repository: name, provider: provider)
             return vc
         }
         
-        container.register(CodeViewController.self) { (_, name: String, hash: String) in
+        container.register(CodeViewController.self) { (r, name: String, hash: String) in
             let vc = mainStoryboard(CodeViewController.identifier) as! CodeViewController
-            vc.viewModel = CodeViewModel(name: name, hash: hash)
+            let provider = r.resolve(Provider.self)!
+            vc.viewModel = CodeViewModel(name: name, hash: hash, provider: provider)
             return vc
         }
     }

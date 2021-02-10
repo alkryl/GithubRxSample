@@ -15,21 +15,16 @@ struct CodeViewModel {
     
     //MARK: Properties
     
+    private var provider: Provider?
     private let name: String
     private let hash: String
     
-    var provider: MoyaProvider<APIClient> = {
-        let configuration = NetworkLoggerPlugin.Configuration(logOptions: [.requestMethod])
-        let plugin = NetworkLoggerPlugin(configuration: configuration)
-        let provider = MoyaProvider<APIClient>(plugins: [plugin])
-        return provider
-    }()
-    
     //MARK: Initialization
     
-    init(name: String, hash: String) {
+    init(name: String, hash: String, provider: Provider) {
         self.name = name
         self.hash = hash
+        self.provider = provider
     }
 }
 
@@ -41,12 +36,14 @@ extension CodeViewModel {
     }
     
     var request: Observable<URLRequest> {
-        provider.rx
-            .request(.commitInfo(repository: name, hash: hash))
-            .asObservable()
-            .compactMap { $0.request?.url?.absoluteString }
-            .map { $0.replacingOccurrences(of: "api.", with: String.empty) }
-            .compactMap { URL(string: $0) }
-            .map { URLRequest(url: $0) }
+        guard let provider = provider else { return Observable.empty() }
+        
+        return provider.rx
+                .request(.commitInfo(repository: name, hash: hash))
+                .asObservable()
+                .compactMap { $0.request?.url?.absoluteString }
+                .map { $0.replacingOccurrences(of: "api.", with: String.empty) }
+                .compactMap { URL(string: $0) }
+                .map { URLRequest(url: $0) }
     }
 }

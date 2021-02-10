@@ -6,6 +6,9 @@
 //  Copyright © 2020 Alexander Krylov. All rights reserved.
 //
 
+import Moya
+
+typealias Provider = MoyaProvider<APIClient>
 typealias EmptyClosure = (() -> ())
 typealias CoordinatorClosure = ((Coordinator) -> ())
 

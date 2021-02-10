@@ -24,20 +24,15 @@ final class ListViewModel {
 
     //MARK: Properties
     
+    private var provider: Provider?
     private var repositories = [Repository]()
     private var language: String = .empty
     
-    var provider: MoyaProvider<APIClient> = {
-        let configuration = NetworkLoggerPlugin.Configuration(logOptions: [.requestMethod])
-        let plugin = NetworkLoggerPlugin(configuration: configuration)
-        let provider = MoyaProvider<APIClient>(plugins: [plugin])
-        return provider
-    }()
-    
     //MARK: Initialization
     
-    init(language: String) {
+    init(language: String, provider: Provider) {
         self.language = language
+        self.provider = provider
         subscribe()
     }
     
@@ -88,8 +83,10 @@ extension ListViewModel {
 
 extension ListViewModel: Subscriber {
     func subscribe() {
+        guard let provider = provider else { return }
+        
         pageRelay
-            .flatMap { self.provider.rx.request(.repositories(self.language, $0)) }
+            .flatMap { provider.rx.request(.repositories(self.language, $0)) }
             .mapObject(Repositories.self)
             .catchError { [weak self] error in
                 self?.didObtainError(.mapping(reason: error.localizedDescription))

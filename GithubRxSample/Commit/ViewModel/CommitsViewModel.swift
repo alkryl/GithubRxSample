@@ -24,20 +24,15 @@ final class CommitsViewModel {
     
     //MARK: Properties
     
+    private var provider: Provider?
     private var commits = [CommitItem]()
     private(set) var repository: String
         
-    var provider: MoyaProvider<APIClient> = {
-        let configuration = NetworkLoggerPlugin.Configuration(logOptions: [.requestMethod])
-        let plugin = NetworkLoggerPlugin(configuration: configuration)
-        let provider = MoyaProvider<APIClient>(plugins: [plugin])
-        return provider
-    }()
-        
     //MARK: Initialization
     
-    init(repository: String) {
+    init(repository: String, provider: Provider) {
         self.repository = repository
+        self.provider = provider
         subscribe()
     }
     
@@ -77,8 +72,10 @@ extension CommitsViewModel {
 
 extension CommitsViewModel: Subscriber {
     func subscribe() {
+        guard let provider = provider else { return }
+        
         Observable<String>.just(.empty)
-            .flatMap { _ in self.provider.rx.request(.commits(self.repository)) }
+            .flatMap { _ in provider.rx.request(.commits(self.repository)) }
             .mapArray(CommitItem.self)
             .catchError { [weak self] error in
                 self?.didObtainError(.mapping(reason: error.localizedDescription))

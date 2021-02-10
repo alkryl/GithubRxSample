@@ -8,6 +8,15 @@
 
 import Moya
 
+extension APIClient {
+    static var provider: Provider {
+        let configuration = NetworkLoggerPlugin.Configuration(logOptions: [.requestMethod])
+        let plugin = NetworkLoggerPlugin(configuration: configuration)
+        let provider = Provider(plugins: [plugin])
+        return provider
+    }
+}
+
 enum APIClient {
     case repositories(_ language: String, _ page: Int)
     case commits(_ repository: String)
