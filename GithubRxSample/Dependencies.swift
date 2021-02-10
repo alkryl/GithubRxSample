@@ -38,7 +38,7 @@ class Dependencies {
             return coordinator
         }
 
-        container.register(LanguageCoordinator.self) { (_, nav: UINavigationController, relay: BehaviorRelay<String>, didFinish: @escaping (Coordinator) -> ()) in
+        container.register(LanguageCoordinator.self) { (_, nav: UINavigationController, relay: BehaviorRelay<String>, didFinish: @escaping CoordinatorClosure) in
             let coordinator = LanguageCoordinator(navigationController: nav)
             coordinator.container = self.container
             coordinator.languageRelay = relay
@@ -46,7 +46,7 @@ class Dependencies {
             return coordinator
         }
         
-        container.register(RepositoryCoordinator.self) { (_, nav: UINavigationController, language: String, didFinish: @escaping (Coordinator) -> ()) in
+        container.register(RepositoryCoordinator.self) { (_, nav: UINavigationController, language: String, didFinish: @escaping CoordinatorClosure) in
             let coordinator = RepositoryCoordinator(navigationController: nav)
             coordinator.container = self.container
             coordinator.language = language
@@ -54,7 +54,7 @@ class Dependencies {
             return coordinator
         }
         
-        container.register(CommitCoordinator.self) { (_, nav: UINavigationController, repository: String, didFinish: @escaping (Coordinator) -> ()) in
+        container.register(CommitCoordinator.self) { (_, nav: UINavigationController, repository: String, didFinish: @escaping CoordinatorClosure) in
             let coordinator = CommitCoordinator(navigationController: nav)
             coordinator.container = self.container
             coordinator.repository = repository
@@ -62,7 +62,7 @@ class Dependencies {
             return coordinator
         }
         
-        container.register(CodeCoordinator.self) { (_, nav: UINavigationController, repository: String, hash: String, didFinish: @escaping (Coordinator) -> ()) in
+        container.register(CodeCoordinator.self) { (_, nav: UINavigationController, repository: String, hash: String, didFinish: @escaping CoordinatorClosure) in
             let coordinator = CodeCoordinator(navigationController: nav)
             coordinator.container = self.container
             coordinator.repository = repository

@@ -17,7 +17,7 @@ class CommitCoordinator: Coordinator {
     //MARK: Properties
     
     var repository: String = .empty
-    var childDidFinish: ((Coordinator) -> ())?
+    var childDidFinish: CoordinatorClosure?
     
     //MARK: Initialization
     
@@ -62,7 +62,7 @@ extension CommitCoordinator {
             self?.finish()
         }
     }
-    private var didFinishAction: (Coordinator) -> () {
+    private var didFinishAction: CoordinatorClosure {
         return { [weak self] coordinator in
             self?.childDidFinish(coordinator)
         }

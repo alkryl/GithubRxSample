@@ -17,7 +17,7 @@ class RepositoryCoordinator: Coordinator {
     //MARK: Properties
     
     var language: String = .empty
-    var childDidFinish: ((Coordinator) -> ())?
+    var childDidFinish: CoordinatorClosure?
     
     //MARK: Initialization
     
@@ -62,7 +62,7 @@ extension RepositoryCoordinator {
             self?.finish()
         }
     }
-    private var didFinishAction: (Coordinator) -> () {
+    private var didFinishAction: CoordinatorClosure {
         return { [weak self] coordinator in
             self?.childDidFinish(coordinator)
         }

@@ -65,7 +65,7 @@ extension MainCoordinator {
             self?.showRepositories(for: language)
         }
     }
-    private var didFinishAction: (Coordinator) -> () {
+    private var didFinishAction: CoordinatorClosure {
         return { [weak self] coordinator in
             self?.childDidFinish(coordinator)
         }

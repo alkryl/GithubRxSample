@@ -7,6 +7,7 @@
 //
 
 typealias EmptyClosure = (() -> ())
+typealias CoordinatorClosure = ((Coordinator) -> ())
 
 struct Text {
     static let repositories = "repositories"

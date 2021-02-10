@@ -18,7 +18,7 @@ class CodeCoordinator: Coordinator {
     
     var repository: String = .empty
     var hash: String = .empty
-    var childDidFinish: ((Coordinator) -> ())?
+    var childDidFinish: CoordinatorClosure?
     
     //MARK: Initialization
     

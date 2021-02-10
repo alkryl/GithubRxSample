@@ -19,7 +19,7 @@ class LanguageCoordinator: Coordinator {
     //MARK: Properties
     
     var languageRelay: BehaviorRelay<String>?
-    var childDidFinish: ((Coordinator) -> ())?
+    var childDidFinish: CoordinatorClosure?
     
     //MARK: Initialization
     
