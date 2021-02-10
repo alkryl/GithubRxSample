@@ -14,6 +14,7 @@ import WebKit
 class CodeViewController: UIViewController {
     
     var viewModel: CodeViewModel!
+    var dismissAction: (() -> ())?
     
     //MARK: Rx
     
@@ -28,6 +29,14 @@ class CodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         subscribe()
+    }
+    
+    //MARK: Transitioning
+    
+    override func didMove(toParent parent: UIViewController?) {
+        if parent == nil {
+            dismissAction?()
+        }
     }
 }
 

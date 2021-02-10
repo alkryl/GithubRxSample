@@ -37,6 +37,11 @@
 		D05E8A1B25962F5D0097B685 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E8A1A25962F5D0097B685 /* Protocols.swift */; };
 		D05E8A1E2596324B0097B685 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E8A1D2596324B0097B685 /* UIViewController+.swift */; };
 		D05E8A2A2596376C0097B685 /* StringResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E8A292596376C0097B685 /* StringResource.swift */; };
+		D0707CEC25CC2562005B138F /* RepositoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0707CEB25CC2562005B138F /* RepositoryCoordinator.swift */; };
+		D0707CF025CC2AB3005B138F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0707CEF25CC2AB3005B138F /* MainCoordinator.swift */; };
+		D0707CF425CC48F9005B138F /* LanguageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0707CF325CC48F9005B138F /* LanguageCoordinator.swift */; };
+		D0707E3625D41339005B138F /* CommitCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0707E3525D41338005B138F /* CommitCoordinator.swift */; };
+		D0707E4C25D4208D005B138F /* CodeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0707E4B25D4208C005B138F /* CodeCoordinator.swift */; };
 		D07DEDBA25BAC4F700FCED98 /* commits.json in Resources */ = {isa = PBXBuildFile; fileRef = D07DEDB925BAC4F700FCED98 /* commits.json */; };
 		D07DEDBD25BAC51600FCED98 /* commitInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = D07DEDBC25BAC51600FCED98 /* commitInfo.json */; };
 		D07DEDEB25BB04BB00FCED98 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07DEDEA25BB04BB00FCED98 /* Error.swift */; };
@@ -66,7 +71,7 @@
 		D0E197E8249CEECD00F68E7B /* RepoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E197E7249CEECD00F68E7B /* RepoCellViewModel.swift */; };
 		D0E197EA249CF84600F68E7B /* CommitCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E197E9249CF84600F68E7B /* CommitCellViewModel.swift */; };
 		D0F3AC2D25C2F3A500AAC904 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AC2C25C2F3A500AAC904 /* Coordinator.swift */; };
-		D0F3AC3025C2F47500AAC904 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AC2F25C2F47500AAC904 /* MainCoordinator.swift */; };
+		D0F3AC3025C2F47500AAC904 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AC2F25C2F47500AAC904 /* AppCoordinator.swift */; };
 		D0F3AC3325C2F50800AAC904 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F3AC3225C2F50800AAC904 /* Dependencies.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +108,11 @@
 		D05E8A1A25962F5D0097B685 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		D05E8A1D2596324B0097B685 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		D05E8A292596376C0097B685 /* StringResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResource.swift; sourceTree = "<group>"; };
+		D0707CEB25CC2562005B138F /* RepositoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCoordinator.swift; sourceTree = "<group>"; };
+		D0707CEF25CC2AB3005B138F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		D0707CF325CC48F9005B138F /* LanguageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCoordinator.swift; sourceTree = "<group>"; };
+		D0707E3525D41338005B138F /* CommitCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitCoordinator.swift; sourceTree = "<group>"; };
+		D0707E4B25D4208C005B138F /* CodeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCoordinator.swift; sourceTree = "<group>"; };
 		D07DEDB925BAC4F700FCED98 /* commits.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = commits.json; sourceTree = "<group>"; };
 		D07DEDBC25BAC51600FCED98 /* commitInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = commitInfo.json; sourceTree = "<group>"; };
 		D07DEDEA25BB04BB00FCED98 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -134,7 +144,7 @@
 		D0E197E7249CEECD00F68E7B /* RepoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCellViewModel.swift; sourceTree = "<group>"; };
 		D0E197E9249CF84600F68E7B /* CommitCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitCellViewModel.swift; sourceTree = "<group>"; };
 		D0F3AC2C25C2F3A500AAC904 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		D0F3AC2F25C2F47500AAC904 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		D0F3AC2F25C2F47500AAC904 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D0F3AC3225C2F50800AAC904 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,6 +242,7 @@
 		D05BBDE925BEFE6B009B7AAE /* Commit */ = {
 			isa = PBXGroup;
 			children = (
+				D0707E3525D41338005B138F /* CommitCoordinator.swift */,
 				D05BBDEC25BEFE94009B7AAE /* Model */,
 				D05BBDEB25BEFE85009B7AAE /* View */,
 				D05BBDEA25BEFE76009B7AAE /* ViewModel */,
@@ -295,6 +306,7 @@
 		D05E8A1825962F0F0097B685 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				D0F3AC2C25C2F3A500AAC904 /* Coordinator.swift */,
 				D05E8A1A25962F5D0097B685 /* Protocols.swift */,
 			);
 			path = Protocols;
@@ -303,6 +315,7 @@
 		D07DEE0225BB0E8900FCED98 /* Language */ = {
 			isa = PBXGroup;
 			children = (
+				D0707CF325CC48F9005B138F /* LanguageCoordinator.swift */,
 				D05BBDE625BEF353009B7AAE /* Model */,
 				D05BBDE525BEF34E009B7AAE /* View */,
 				D05BBDE425BEF341009B7AAE /* ViewModel */,
@@ -313,6 +326,7 @@
 		D07DEE0325BB0EA700FCED98 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				D0707CEF25CC2AB3005B138F /* MainCoordinator.swift */,
 				D07DEE0525BB0EBE00FCED98 /* View */,
 				D07DEE0625BB0ECF00FCED98 /* ViewModel */,
 			);
@@ -349,6 +363,7 @@
 		D0A0D20D2594E95400E66C64 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				D0707CEB25CC2562005B138F /* RepositoryCoordinator.swift */,
 				D0A0D20E2594E99700E66C64 /* Model */,
 				D0A0D2102594E9C100E66C64 /* View */,
 				D0A0D20F2594E9A200E66C64 /* ViewModel */,
@@ -407,8 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				D0F3AC3225C2F50800AAC904 /* Dependencies.swift */,
-				D0F3AC2C25C2F3A500AAC904 /* Coordinator.swift */,
-				D0F3AC2F25C2F47500AAC904 /* MainCoordinator.swift */,
+				D0F3AC2F25C2F47500AAC904 /* AppCoordinator.swift */,
 				D05E8A1825962F0F0097B685 /* Protocols */,
 				D0D0842C247E8EAD00611245 /* Networking */,
 				D0D08429247D3DFC00611245 /* Extensions */,
@@ -439,6 +453,7 @@
 		D0D08419247D3A6500611245 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				D0707E4B25D4208C005B138F /* CodeCoordinator.swift */,
 				D05BBEC925C026F9009B7AAE /* View */,
 				D05BBEC825C026EE009B7AAE /* ViewModel */,
 			);
@@ -619,13 +634,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0E197E8249CEECD00F68E7B /* RepoCellViewModel.swift in Sources */,
-				D0F3AC3025C2F47500AAC904 /* MainCoordinator.swift in Sources */,
+				D0F3AC3025C2F47500AAC904 /* AppCoordinator.swift in Sources */,
+				D0707CF025CC2AB3005B138F /* MainCoordinator.swift in Sources */,
 				D0D5635E24922DA2000C2FF0 /* CodeViewController.swift in Sources */,
 				D0D08433247EAFDB00611245 /* MainViewController.swift in Sources */,
 				D015925825893DD5007675DD /* APIClient.swift in Sources */,
 				D0D084372482B91C00611245 /* Repository.swift in Sources */,
 				D0D08405247D389A00611245 /* AppDelegate.swift in Sources */,
+				D0707CF425CC48F9005B138F /* LanguageCoordinator.swift in Sources */,
 				D00BBBAE248E417E000B31F8 /* AuthorLoginLabel.swift in Sources */,
+				D0707E3625D41339005B138F /* CommitCoordinator.swift in Sources */,
 				D0D08407247D389A00611245 /* SceneDelegate.swift in Sources */,
 				D05E8A1B25962F5D0097B685 /* Protocols.swift in Sources */,
 				D00BBB952487A742000B31F8 /* StarsLabel.swift in Sources */,
@@ -640,11 +658,13 @@
 				D0D08424247D3B7B00611245 /* ListViewModel.swift in Sources */,
 				D0D08435247EB00F00611245 /* MainViewModel.swift in Sources */,
 				D05E8A2A2596376C0097B685 /* StringResource.swift in Sources */,
+				D0707CEC25CC2562005B138F /* RepositoryCoordinator.swift in Sources */,
 				D0D0844124855EEE00611245 /* RepositoryCell.swift in Sources */,
 				D0D0841D247D3A9D00611245 /* ListViewController.swift in Sources */,
 				D00BBBA4248A4ECE000B31F8 /* Commit.swift in Sources */,
 				D00BBBB8248EC703000B31F8 /* ConfirmButton.swift in Sources */,
 				D0F3AC2D25C2F3A500AAC904 /* Coordinator.swift in Sources */,
+				D0707E4C25D4208D005B138F /* CodeCoordinator.swift in Sources */,
 				D00BBBB4248E41D5000B31F8 /* AuthorImageView.swift in Sources */,
 				D0D08439248509BF00611245 /* URLSession+Rx.swift in Sources */,
 				D00BBBB2248E419D000B31F8 /* HashLabel.swift in Sources */,

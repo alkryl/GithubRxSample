@@ -13,8 +13,9 @@ import RxDataSources
 
 final class CommitsViewController: UIViewController {
     
-    weak var coordinator: MainCoordinator!
     var viewModel: CommitsViewModel!
+    var showCodeAction: ((String, String) -> ())?
+    var dismissAction: (() -> ())?
     
     //MARK: Rx
     
@@ -45,6 +46,14 @@ final class CommitsViewController: UIViewController {
         super.viewDidLoad()
         prepareTableView()
         subscribe()
+    }
+    
+    //MARK: Transitioning
+    
+    override func didMove(toParent parent: UIViewController?) {
+        if parent == nil {
+            dismissAction?()
+        }
     }
         
     //MARK: Private
@@ -100,7 +109,7 @@ extension CommitsViewController: Subscriber {
             .do(onNext: { [weak self] hash in
                 guard let self = self else { return }
                 let name = self.viewModel.repository
-                self.coordinator.show(.code(name, hash))
+                self.showCodeAction?(name, hash)
             }).subscribe()
             .disposed(by: db)
     }

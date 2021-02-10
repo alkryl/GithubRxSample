@@ -12,8 +12,8 @@ import RxCocoa
 
 final class LanguageViewController: UIViewController {
     
-    weak var coordinator: MainCoordinator!
     var viewModel: LanguageViewModel!
+    var dismissAction: (() -> ())?
     
     //MARK: Rx
     
@@ -24,7 +24,7 @@ final class LanguageViewController: UIViewController {
     @IBOutlet private weak var languagePicker: UIPickerView!
     @IBOutlet private weak var confirmButton: ConfirmButton!
     
-    //MARK: ViewController lifecycle
+    //MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,19 +40,13 @@ extension LanguageViewController: Subscriber {
             .bind(to: languagePicker.rx.itemTitles) { String($1) }
             .disposed(by: db)
         
-        let tapEvent = confirmButton.rx.tap.share()
-        
-        tapEvent
-            .map { [weak self] in
-                guard let self = self else { return .zero }
-                return self.languagePicker.selectedRow(inComponent: .zero)
+        confirmButton.rx.tap
+            .throttle(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+            .do(onNext: { [weak self] in
+                self?.dismissAction?()
+            }).compactMap { [weak self] in
+                self?.languagePicker.selectedRow(inComponent: .zero)
             }.bind(to: viewModel.selectedRow)
             .disposed(by: db)
-        
-        tapEvent
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.coordinator.dismiss(self)
-            }).disposed(by: db)
     }
 }

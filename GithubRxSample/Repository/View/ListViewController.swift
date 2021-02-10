@@ -13,8 +13,9 @@ import RxDataSources
 
 final class ListViewController: UIViewController {
     
-    weak var coordinator: MainCoordinator!
     var viewModel: ListViewModel!
+    var showCommitsAction: ((String) -> ())?
+    var dismissAction: (() -> ())?
     
     //MARK: Rx
     
@@ -51,6 +52,14 @@ final class ListViewController: UIViewController {
         super.viewWillAppear(animated)
         hideNavigationBar(false)
         hideBackButtonText()
+    }
+    
+    //MARK: Transitioning
+    
+    override func didMove(toParent parent: UIViewController?) {
+        if parent == nil {
+            dismissAction?()
+        }
     }
     
     //MARK: Private
@@ -113,7 +122,7 @@ extension ListViewController: Subscriber {
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 let name = self.viewModel.repositoryName
-                self.coordinator.show(.description(name))
+                self.showCommitsAction?(name)
             }).drive()
             .disposed(by: db)
         

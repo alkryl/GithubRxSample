@@ -13,8 +13,9 @@ import RxGesture
 
 final class MainViewController: UIViewController {
     
-    weak var coordinator: MainCoordinator!
     var viewModel: MainViewModel!
+    var showLanguagesAction: ((BehaviorRelay<String>) -> ())?
+    var showRepositoriesAction: ((String) -> ())?
     
     //MARK: Rx
     
@@ -44,7 +45,7 @@ final class MainViewController: UIViewController {
         chooseView.animate(with: { [weak self] in
             guard let self = self else { return }
             let relay = self.viewModel.selectedLanguage
-            self.coordinator.show(.language(relay))
+            self.showLanguagesAction?(relay)
         })
     }
 }
@@ -54,7 +55,7 @@ extension MainViewController: Subscriber {
         viewModel.selectedLanguage
             .filter { !$0.isEmpty }
             .do(onNext: { [weak self] language in
-                self?.coordinator.show(.list(language))
+                self?.showRepositoriesAction?(language)
             }).subscribe()
             .disposed(by: db)
         
