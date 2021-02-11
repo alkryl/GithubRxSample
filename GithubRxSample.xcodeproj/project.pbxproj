@@ -43,7 +43,6 @@
 		D0707E3625D41339005B138F /* CommitCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0707E3525D41338005B138F /* CommitCoordinator.swift */; };
 		D0707E4C25D4208D005B138F /* CodeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0707E4B25D4208C005B138F /* CodeCoordinator.swift */; };
 		D07DEDBA25BAC4F700FCED98 /* commits.json in Resources */ = {isa = PBXBuildFile; fileRef = D07DEDB925BAC4F700FCED98 /* commits.json */; };
-		D07DEDBD25BAC51600FCED98 /* commitInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = D07DEDBC25BAC51600FCED98 /* commitInfo.json */; };
 		D07DEDEB25BB04BB00FCED98 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07DEDEA25BB04BB00FCED98 /* Error.swift */; };
 		D0A0D1E625948FB700E66C64 /* repositories.json in Resources */ = {isa = PBXBuildFile; fileRef = D0A0D1E525948FB700E66C64 /* repositories.json */; };
 		D0D08405247D389A00611245 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D08404247D389A00611245 /* AppDelegate.swift */; };
@@ -114,7 +113,6 @@
 		D0707E3525D41338005B138F /* CommitCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitCoordinator.swift; sourceTree = "<group>"; };
 		D0707E4B25D4208C005B138F /* CodeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCoordinator.swift; sourceTree = "<group>"; };
 		D07DEDB925BAC4F700FCED98 /* commits.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = commits.json; sourceTree = "<group>"; };
-		D07DEDBC25BAC51600FCED98 /* commitInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = commitInfo.json; sourceTree = "<group>"; };
 		D07DEDEA25BB04BB00FCED98 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		D0A0D1E525948FB700E66C64 /* repositories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = repositories.json; sourceTree = "<group>"; };
 		D0D08401247D389A00611245 /* GithubRxSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubRxSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -355,7 +353,6 @@
 			children = (
 				D0A0D1E525948FB700E66C64 /* repositories.json */,
 				D07DEDB925BAC4F700FCED98 /* commits.json */,
-				D07DEDBC25BAC51600FCED98 /* commitInfo.json */,
 			);
 			path = Stubbed;
 			sourceTree = "<group>";
@@ -554,7 +551,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D07DEDBA25BAC4F700FCED98 /* commits.json in Resources */,
-				D07DEDBD25BAC51600FCED98 /* commitInfo.json in Resources */,
 				D0D563642492489B000C2FF0 /* README.md in Resources */,
 				D0D08411247D389B00611245 /* LaunchScreen.storyboard in Resources */,
 				D00BBBA8248A8578000B31F8 /* CommitCell.xib in Resources */,

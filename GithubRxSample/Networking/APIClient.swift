@@ -47,7 +47,7 @@ extension APIClient: TargetType {
         switch self {
         case .repositories: return stub(.repositories)
         case .commits:      return stub(.commits)
-        case .commitInfo:   return stub(.commitInfo)
+        case .commitInfo:   return .empty
         }
     }
 
@@ -92,7 +92,7 @@ private extension APIClient {
             switch name {
             case .repositories: return R.file.repositoriesJson()
             case .commits:      return R.file.commitsJson()
-            case .commitInfo:   return R.file.commitInfoJson()
+            default: return nil
             }
         }()
         
