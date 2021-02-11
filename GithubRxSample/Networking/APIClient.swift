@@ -15,6 +15,13 @@ extension APIClient {
         let provider = Provider(plugins: [plugin])
         return provider
     }
+    
+    static var stubbedProvider: Provider {
+        let configuration = NetworkLoggerPlugin.Configuration(logOptions: [.requestMethod])
+        let plugin = NetworkLoggerPlugin(configuration: configuration)
+        let provider = Provider(stubClosure: MoyaProvider.delayedStub(1), plugins: [plugin])
+        return provider
+    }
 }
 
 enum APIClient {
