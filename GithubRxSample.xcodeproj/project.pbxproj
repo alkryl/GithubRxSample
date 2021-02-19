@@ -473,12 +473,12 @@
 				D05BBDE925BEFE6B009B7AAE /* Commit */,
 				D0D08419247D3A6500611245 /* Code */,
 				D0D0843C24853F0500611245 /* Other views */,
-				D0D08418247D3A2200611245 /* Assets */,
+				D0D08418247D3A2200611245 /* Supporting */,
 			);
 			path = GithubRxSample;
 			sourceTree = "<group>";
 		};
-		D0D08418247D3A2200611245 /* Assets */ = {
+		D0D08418247D3A2200611245 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
 				D0D08404247D389A00611245 /* AppDelegate.swift */,
@@ -488,7 +488,7 @@
 				D07DEDEA25BB04BB00FCED98 /* Error.swift */,
 				D0D08412247D389B00611245 /* Info.plist */,
 			);
-			path = Assets;
+			path = Supporting;
 			sourceTree = "<group>";
 		};
 		D0D08419247D3A6500611245 /* Code */ = {
@@ -992,7 +992,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8333M93278;
-				INFOPLIST_FILE = GithubRxSample/Assets/Info.plist;
+				INFOPLIST_FILE = GithubRxSample/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1011,7 +1011,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8333M93278;
-				INFOPLIST_FILE = GithubRxSample/Assets/Info.plist;
+				INFOPLIST_FILE = GithubRxSample/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
