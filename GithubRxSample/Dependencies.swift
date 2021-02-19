@@ -13,13 +13,20 @@ import Moya
 
 class Dependencies {
     
+    enum ProviderType {
+        case network, stub
+    }
+    
     //MARK: Properties
     
-    let container = Container()
+    internal let container = Container()
+    private var providerType: ProviderType = .network
         
     //MARK: Initialization
     
-    init() {
+    init(provider type: ProviderType) {
+        self.providerType = type
+        
         registerProvider()
         registerCoordinators()
         registerControllers()
@@ -28,7 +35,10 @@ class Dependencies {
     //MARK: Private
     
     private func registerProvider() {
-        container.register(Provider.self) { _ in
+        container.register(Provider.self) { (_, type: ProviderType) in
+            if case .stub = type {
+                return APIClient.stubbedProvider
+            }
             return APIClient.provider
         }
     }
@@ -99,21 +109,21 @@ class Dependencies {
         
         container.register(ListViewController.self) { (r, language: String) in
             let vc = mainStoryboard(ListViewController.identifier) as! ListViewController
-            let provider = r.resolve(Provider.self)!
+            let provider = r.resolve(Provider.self, argument: self.providerType)!
             vc.viewModel = ListViewModel(language: language, provider: provider)
             return vc
         }
         
         container.register(CommitsViewController.self) { (r, name: String) in
             let vc = mainStoryboard(CommitsViewController.identifier) as! CommitsViewController
-            let provider = r.resolve(Provider.self)!
+            let provider = r.resolve(Provider.self, argument: self.providerType)!
             vc.viewModel = CommitsViewModel(repository: name, provider: provider)
             return vc
         }
         
         container.register(CodeViewController.self) { (r, name: String, hash: String) in
             let vc = mainStoryboard(CodeViewController.identifier) as! CodeViewController
-            let provider = r.resolve(Provider.self)!
+            let provider = r.resolve(Provider.self, argument: self.providerType)!
             vc.viewModel = CodeViewModel(name: name, hash: hash, provider: provider)
             return vc
         }

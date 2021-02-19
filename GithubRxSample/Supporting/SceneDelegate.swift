@@ -11,7 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var dependenciesManager = Dependencies()
+    var dependenciesManager = Dependencies(provider: .stub)
     var coordinator: Coordinator?
     
     //MARK: UISceneDelegate
