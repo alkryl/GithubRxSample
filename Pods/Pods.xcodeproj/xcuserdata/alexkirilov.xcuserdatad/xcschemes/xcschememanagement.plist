@@ -4,7 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Alamofire.xcscheme</key>
+		<key>Alamofire-framework.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Alamofire-library.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -24,22 +29,42 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Moya-ObjectMapper.xcscheme</key>
+		<key>Moya-ObjectMapper-framework.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Moya.xcscheme</key>
+		<key>Moya-ObjectMapper-library.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ObjectMapper.xcscheme</key>
+		<key>Moya-framework.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Moya-library.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ObjectMapper-framework.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ObjectMapper-library.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-GithubRxSample.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GithubRxSampleTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -54,7 +79,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>RxCocoa.xcscheme</key>
+		<key>RxBlocking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxCocoa-framework.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxCocoa-library.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -74,17 +109,32 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>RxRelay.xcscheme</key>
+		<key>RxRelay-framework.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>RxSwift.xcscheme</key>
+		<key>RxRelay-library.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxSwift-framework.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxSwift-library.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>RxSwiftExt.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxTest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

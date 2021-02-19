@@ -12,7 +12,7 @@ extension Int {
     static let zero = 0
 }
 
-extension String {
+public extension String {
     static let empty = ""
 }
 

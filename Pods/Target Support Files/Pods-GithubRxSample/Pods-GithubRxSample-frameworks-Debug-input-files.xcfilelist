@@ -1,17 +1,17 @@
 ${PODS_ROOT}/Target Support Files/Pods-GithubRxSample/Pods-GithubRxSample-frameworks.sh
-${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Alamofire-framework/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/Motion/Motion.framework
-${BUILT_PRODUCTS_DIR}/Moya/Moya.framework
-${BUILT_PRODUCTS_DIR}/Moya-ObjectMapper/Moya_ObjectMapper.framework
-${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework
+${BUILT_PRODUCTS_DIR}/Moya-framework/Moya.framework
+${BUILT_PRODUCTS_DIR}/Moya-ObjectMapper-framework/Moya_ObjectMapper.framework
+${BUILT_PRODUCTS_DIR}/ObjectMapper-framework/ObjectMapper.framework
 ${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework
-${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework
+${BUILT_PRODUCTS_DIR}/RxCocoa-framework/RxCocoa.framework
 ${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework
 ${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework
 ${BUILT_PRODUCTS_DIR}/RxKingfisher/RxKingfisher.framework
-${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework
-${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
+${BUILT_PRODUCTS_DIR}/RxRelay-framework/RxRelay.framework
+${BUILT_PRODUCTS_DIR}/RxSwift-framework/RxSwift.framework
 ${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework
 ${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework
